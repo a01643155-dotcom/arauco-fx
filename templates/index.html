@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% block title %}Arauco · FX Risk Analysis · AFI Tec Monterrey{% endblock %}
+
+{% block content %}
+<body data-page="home">
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-eyebrow" data-aos="fade-up">
+      <i class="fa fa-leaf"></i> Administración Financiera Internacional · Tec de Monterrey
+    </div>
+
+    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="80">
+      Arauco: Riesgo Cambiario<br/>
+      <span>en Mercados Globales</span>
+    </h1>
+
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="160">
+      Análisis estratégico de la exposición USD/MXN de la tercera empresa forestal más grande del mundo.
+      Desde la naturaleza y lo renovable, contribuimos a las personas y al planeta.
+    </p>
+
+    <div class="hero-cta-group" data-aos="fade-up" data-aos-delay="240">
+      <a href="/company" class="btn-primary">
+        <i class="fa fa-chart-bar"></i> Ver Análisis Completo
+      </a>
+      <a href="/fx-exposure" class="btn-ghost">
+        <i class="fa fa-exchange-alt"></i> Exposición FX
+      </a>
+    </div>
+
+    <!-- Metrics bar -->
+    <div class="hero-metrics" data-aos="fade-up" data-aos-delay="360">
+      <div class="metric-item">
+        <div class="metric-value">
+          <span data-count="6084" data-prefix="$" data-suffix="M">$0M</span>
+        </div>
+        <div class="metric-label">Revenue USD (2025 LTM)</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-value">
+          <span data-count="21.9" data-suffix="%" data-decimals="1">0%</span>
+        </div>
+        <div class="metric-label">Margen EBITDA</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-value">
+          <span data-count="3" data-prefix="#">#0</span>
+        </div>
+        <div class="metric-label">Capacidad Pulpa Global</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-value">
+          <span data-count="1" data-prefix="#">#0</span>
+        </div>
+        <div class="metric-label">Tableros en México</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ EXECUTIVE SUMMARY ═══════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Executive Summary</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">
+        ¿Por qué importa el riesgo cambiario en Arauco?
+      </h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
+        Arauco opera en 11 países con ingresos en USD, EUR y múltiples monedas locales,
+        mientras sus costos en México están denominados en MXN. Esta brecha es el núcleo de su exposición cambiaria.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card" data-aos="fade-up" data-aos-delay="0">
+        <div class="card-icon"><i class="fa fa-globe-americas"></i></div>
+        <h3 class="card-title">Presencia Global</h3>
+        <p class="card-text">Operaciones en Chile, Brasil, Uruguay, Argentina, Perú, Colombia, EE.UU., Canadá, México y Europa. 37% de ingresos provienen de Norteamérica.</p>
+        <div class="tags"><span class="tag">11 países</span><span class="tag">USD / EUR / MXN</span></div>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="80">
+        <div class="card-icon"><i class="fa fa-industry"></i></div>
+        <h3 class="card-title">Líder en México</h3>
+        <p class="card-text">#1 fabricante de tableros en México, EE.UU., Canadá y LATAM. Plantas en Durango, Zitácuaro (Michoacán) y Cuautitlán (Estado de México).</p>
+        <div class="tags"><span class="tag">MDF</span><span class="tag">PBO/MDP</span><span class="tag">Melamina</span></div>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="160">
+        <div class="card-icon"><i class="fa fa-dollar-sign"></i></div>
+        <h3 class="card-title">Exposición USD/MXN</h3>
+        <p class="card-text">Materias primas clave —urea, metanol, fenol— cotizadas en USD. Ingresos locales en MXN. Una depreciación del MXN eleva costos operativos de forma directa.</p>
+        <div class="tags"><span class="tag">Urea USD</span><span class="tag">Metanol USD</span><span class="tag">COGS en USD</span></div>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="240">
+        <div class="card-icon"><i class="fa fa-shield-alt"></i></div>
+        <h3 class="card-title">Estrategia de Cobertura</h3>
+        <p class="card-text">Arauco gestiona su exposición principalmente a través de cobertura natural y financiamiento en moneda local. Actualmente no utiliza derivados financieros en México.</p>
+        <div class="tags"><span class="tag">Natural Hedge</span><span class="tag">Sin derivados activos</span></div>
+      </div>
+    </div>
+
+    <!-- Revenue split -->
+    <div class="split-2 mt-4" style="margin-top:3rem">
+      <div data-aos="fade-right">
+        <div class="section-eyebrow">Estructura de Ingresos</div>
+        <h3 class="font-head" style="font-size:1.8rem; color:var(--forest); margin-bottom:1rem;">
+          50% Pulpa · 50% Madera & Paneles
+        </h3>
+        <p style="color:var(--gray-600); line-height:1.8; margin-bottom:1.5rem;">
+          La perfecta distribución entre celulosa y productos de madera otorga a Arauco
+          una diversificación natural que amortigua ciclos sectoriales.
+          Los ingresos de <strong>US$6,084M</strong> (LTM Dic 2025) reflejan su posición
+          como el tercer mayor productor de pulpa del mundo (5,275 kt de capacidad).
+        </p>
+        <div class="info-panel">
+          <strong><i class="fa fa-info-circle"></i> Calificación crediticia:</strong>
+          Fitch <strong>BBB</strong> · S&P <strong>BBB-</strong> · Moody's <strong>Baa3</strong> —
+          grado de inversión, perspectiva estable.
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="chart-wrap">
+          <div class="chart-title"><i class="fa fa-chart-pie" style="color:var(--green)"></i> Ingresos por Segmento</div>
+          <canvas id="segmentChart" height="260"></canvas>
+          <div class="donut-legend mt-2">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#2D5A1B"></div>
+              <span class="legend-label">Pulpa (Celulosa)</span>
+              <span class="legend-value">50% · US$3,042M</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#8B5E3C"></div>
+              <span class="legend-label">Madera & Paneles</span>
+              <span class="legend-value">50% · US$3,042M</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ NAVIGATION CARDS ═══════════ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Navega el análisis</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">
+        Análisis Integral de Riesgo Cambiario
+      </h2>
+    </div>
+    <div class="cards-grid">
+      {% set nav_items = [
+        ('/company',    'fa-building',       'Company Analysis',    'Modelo de negocio, operaciones internacionales, cadena de suministro y fuentes de ingreso de Arauco.'),
+        ('/industry',   'fa-tree',           'Industry & Competitors','Competidores LATAM, comparativas estratégicas e impacto sectorial del tipo de cambio.'),
+        ('/macro',      'fa-chart-line',     'Macroeconomic Factors','Inflación, tasas de interés, nearshoring y ciclos económicos que afectan la operación.'),
+        ('/fx-exposure','fa-exchange-alt',   'FX Exposure Analysis', 'Cuantificación de la exposición USD/MXN, sensibilidad y escenarios hipotéticos.'),
+        ('/hedging',    'fa-shield-alt',     'Hedging Strategy',     'Forwards, futuros, swaps y cobertura natural: cuál es la mejor opción para Arauco.'),
+        ('/references', 'fa-book-open',      'References',           'Bibliografía académica completa en formato APA con fuentes primarias y secundarias.')
+      ] %}
+      {% for url, icon, title, text in nav_items %}
+      <a href="{{ url }}" class="card-dark" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 60 }}" style="display:block">
+        <div class="card-icon" style="background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.1)">
+          <i class="fa {{ icon }}" style="color:var(--sage)"></i>
+        </div>
+        <h3 class="card-title">{{ title }}</h3>
+        <p class="card-text">{{ text }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ KEY STATS ═══════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Datos Clave</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Arauco en Números</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
+        Fuente: Arauco Annual Report / Presentación Corporativa, Diciembre 2025 LTM
+      </p>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(170px,1fr)); gap:1.25rem;">
+      {% set stats = [
+        ('$6,084M','USD','Ingresos Totales','LTM Dic 2025'),
+        ('$1,331M','USD','EBITDA Ajustado','Margen 21.9%'),
+        ('5,275k','ton','Capacidad Pulpa','#3 Mundial'),
+        ('8,616k','m³','Capacidad Paneles','#3 Mundial'),
+        ('1,071k','ha','Superficie Forestal','Propia'),
+        ('490k','ha','Plantaciones','Certificadas'),
+        ('30%','—','Market Share MDF','México'),
+        ('40%','—','Market Share PBO','México'),
+      ] %}
+      {% for val, unit, label, sub in stats %}
+      <div class="stat-card" data-aos="zoom-in" data-aos-delay="{{ loop.index0 * 50 }}">
+        <div class="stat-number">{{ val }}<span class="stat-unit"> {{ unit }}</span></div>
+        <div class="stat-label">{{ label }}</div>
+        <div class="stat-delta">{{ sub }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>document.body.dataset.page = 'home';</script>
+{% endblock %}

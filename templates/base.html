@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Arauco — FX Risk Analysis{% endblock %}</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <span class="logo-mark">▲</span>
+      <span class="logo-text">ARAUCO</span>
+      <span class="logo-sub">FX Risk Analysis</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/"          class="nav-link {% if active=='home'       %}active{% endif %}">Home</a></li>
+      <li><a href="/company"   class="nav-link {% if active=='company'    %}active{% endif %}">Company</a></li>
+      <li><a href="/industry"  class="nav-link {% if active=='industry'   %}active{% endif %}">Industry</a></li>
+      <li><a href="/macro"     class="nav-link {% if active=='macro'      %}active{% endif %}">Macro</a></li>
+      <li><a href="/fx-exposure" class="nav-link {% if active=='fx'       %}active{% endif %}">FX Exposure</a></li>
+      <li><a href="/hedging"   class="nav-link {% if active=='hedging'    %}active{% endif %}">Hedging</a></li>
+      <li><a href="/references" class="nav-link {% if active=='references'%}active{% endif %}">References</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle"><i class="fa fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ PAGE CONTENT ═══════════════════════════ -->
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark">▲</span>
+      <strong>ARAUCO</strong> — Administración Financiera Internacional
+    </div>
+    <div class="footer-info">
+      <p>Tecnológico de Monterrey · Campus Guadalajara · Mayo 2026</p>
+      <p>Issabela Rosales · María Pérez · Roxana Cruz · Daniela Hernández · Martín Espejo</p>
+    </div>
+    <div class="footer-note">
+      Datos financieros: Arauco Annual Report 2025 (LTM Dec 2025) · Bloomberg · Banxico
+    </div>
+  </div>
+</footer>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<!-- Main JS -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

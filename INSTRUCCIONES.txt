@@ -1,0 +1,144 @@
+═══════════════════════════════════════════════════════════════
+  ARAUCO · FX Risk Analysis · Proyecto Web Flask
+  Administración Financiera Internacional · Tec de Monterrey
+═══════════════════════════════════════════════════════════════
+
+ESTRUCTURA DE CARPETAS
+──────────────────────
+arauco_project/
+├── app.py                     ← Servidor Flask (punto de entrada)
+├── requirements.txt           ← Dependencias Python
+├── INSTRUCCIONES.txt          ← Este archivo
+├── templates/
+│   ├── base.html              ← Template base (navbar, footer)
+│   ├── index.html             ← Home (Hero + métricas)
+│   ├── company.html           ← Company Analysis
+│   ├── industry.html          ← Industry & Competitors
+│   ├── macro.html             ← Macroeconomic Factors
+│   ├── fx_exposure.html       ← FX Exposure Analysis
+│   ├── hedging.html           ← Hedging Strategy
+│   └── references.html        ← Bibliografía APA
+└── static/
+    ├── css/
+    │   └── main.css           ← Estilos premium completos
+    └── js/
+        └── main.js            ← Charts + animaciones + interacción
+
+
+INSTALACIÓN CON ANACONDA + VS CODE
+────────────────────────────────────
+
+PASO 1 – Abrir Anaconda Navigator
+   • Busca "Anaconda Navigator" en tu menú de inicio
+   • Abre el programa
+
+PASO 2 – Crear entorno virtual nuevo (recomendado)
+   • En Anaconda Navigator → "Environments" → "Create"
+   • Nombre: arauco_env
+   • Python: 3.11
+   • Clic en "Create"
+
+PASO 3 – Activar entorno e instalar Flask
+   Opción A (Terminal Anaconda):
+      conda activate arauco_env
+      pip install flask
+
+   Opción B (Anaconda Navigator):
+      • Selecciona "arauco_env" en Environments
+      • Clic en "Open Terminal"
+      • Ejecuta: pip install flask
+
+PASO 4 – Abrir el proyecto en VS Code
+   • Abre VS Code
+   • File → Open Folder → selecciona la carpeta "arauco_project"
+   • VS Code debería detectar el entorno Anaconda automáticamente
+   • Si no: Ctrl+Shift+P → "Python: Select Interpreter" → arauco_env
+
+PASO 5 – Correr el servidor
+   Opción A (Terminal de VS Code):
+      • View → Terminal (Ctrl+`)
+      • python app.py
+
+   Opción B (click derecho en app.py):
+      • Right-click → "Run Python File in Terminal"
+
+PASO 6 – Abrir en el navegador
+   • Abre Google Chrome o Firefox
+   • Ve a: http://127.0.0.1:5000
+   • ¡Listo! La aplicación ya está corriendo.
+
+
+COMANDOS RÁPIDOS (Terminal)
+────────────────────────────
+# Instalar Flask (solo primera vez)
+pip install flask
+
+# Correr la aplicación
+python app.py
+
+# Parar la aplicación
+Ctrl + C en la terminal
+
+
+SOLUCIÓN DE PROBLEMAS
+──────────────────────
+❌ Error: "ModuleNotFoundError: No module named 'flask'"
+   → Solución: pip install flask
+
+❌ Error: "Address already in use / Port 5000"
+   → Solución: Cambia el puerto en app.py
+     app.run(debug=True, port=5001)
+   → Luego ve a http://127.0.0.1:5001
+
+❌ Las gráficas no aparecen / Los estilos no cargan
+   → Verifica que estás corriendo desde DENTRO de la carpeta arauco_project
+   → Verifica que las carpetas static/css/ y static/js/ existen con sus archivos
+
+❌ macOS Error: "Port 5000 in use"
+   → En macOS, el puerto 5000 lo usa AirPlay. Cambia a port=5050
+
+
+PÁGINAS DE LA APLICACIÓN
+─────────────────────────
+/              → Home (Hero + resumen ejecutivo + métricas)
+/company       → Company Analysis (modelo de negocio, México, costos)
+/industry      → Industry & Competitors (ranking global, México)
+/macro         → Macroeconomic Factors (TC, tasas, nearshoring)
+/fx-exposure   → FX Exposure Analysis (sensibilidad, escenarios)
+/hedging       → Hedging Strategy (forwards, futuros, opciones)
+/references    → Referencias APA (25 fuentes verificadas)
+
+
+TECNOLOGÍAS UTILIZADAS
+───────────────────────
+• Python 3.11+ con Flask 3.0
+• HTML5 + CSS3 avanzado (CSS Grid, Flexbox, Variables CSS)
+• JavaScript ES6+
+• Chart.js 4.4 (gráficas interactivas)
+• AOS 2.3 (Animate On Scroll)
+• Font Awesome 6.5 (iconografía)
+• Google Fonts: Inter + Playfair Display
+• Diseño: Paleta Arauco (verde bosque, oliva, madera, beige)
+• Sin dependencias pesadas — funciona sin conexión a internet
+  (excepto fuentes de Google y librerías CDN)
+
+
+NOTAS ACADÉMICAS
+─────────────────
+Datos financieros basados en:
+• Arauco Corporate Presentation, LTM Diciembre 2025
+• Presentación del Socio Formador (Mayo 2026)
+• Fuentes públicas: Banxico, IMF, Bloomberg, Reuters
+
+Elaborado para: Administración Financiera Internacional
+Profesor: Ricardo Navarro · Grupo M1
+Tec de Monterrey, Campus Guadalajara · Mayo 2026
+
+Equipo:
+• Issabela Rosales Hawa    A01642432
+• María Pérez              A01643155
+• Roxana Cruz Hernández    A01540660
+• Daniela Hernández Martínez A01613967
+• Martín Espejo            A01642331
+
+═══════════════════════════════════════════════════════════════

@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block title %}References · Arauco FX{% endblock %}
+{% block content %}
+<body data-page="references">
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow"><i class="fa fa-book-open"></i> References</div>
+    <h1 class="page-hero-title">Bibliografía & Fuentes<br/>Académicas y Corporativas</h1>
+    <p class="page-hero-sub">Referencias en formato APA (7ª edición) utilizadas en la elaboración de este análisis. Fuentes primarias y secundarias verificadas.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Primary sources -->
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Fuentes Primarias</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Reportes Corporativos y Oficiales</h2>
+    </div>
+
+    <div class="ref-list" data-aos="fade-up">
+      {% set refs_primary = [
+        ('1','Arauco. (2025). <em>Arauco Corporate Presentation — Financial Highlights</em> [Presentación interna, LTM Diciembre 2025]. Arauco S.A.',
+         'arauco.com','Datos financieros, producción y estructura corporativa'),
+        ('2','Arauco. (2025). <em>Catálogo de Productos y Tendencias 2026 — México</em> [Presentación socio formador, Mayo 2026]. Arauco México.',
+         'arauco.com','Datos de mercado México, inversiones y estructura de costos'),
+        ('3','Banco de México. (2026). <em>Tipo de cambio histórico USD/MXN — Serie SF43718</em>. Banxico Sistema de Información Económica.',
+         'https://www.banxico.org.mx/SieInternet/','Datos históricos tipo de cambio'),
+        ('4','Banco de México. (2026). <em>Tasas de interés objetivo: comunicados de política monetaria 2020–2026</em>. Banxico.',
+         'https://www.banxico.org.mx','Tasas de referencia Banxico'),
+        ('5','Instituto Nacional de Estadística y Geografía [INEGI]. (2026). <em>Índice Nacional de Precios al Consumidor (INPC) — Marzo 2026</em>. INEGI.',
+         'https://www.inegi.org.mx','Inflación México'),
+      ] %}
+      {% for num, cit, url, nota in refs_primary %}
+      <div class="ref-item">
+        <div class="ref-num">{{ num }}</div>
+        <div class="ref-content">
+          <div class="ref-citation">{{ cit | safe }} Disponible en: <a href="{{ url }}" target="_blank">{{ url }}</a></div>
+          <div class="ref-tag"><i class="fa fa-tag"></i> {{ nota }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- International organizations -->
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Organismos Internacionales</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">FMI, Banco Mundial y BIS</h2>
+    </div>
+
+    <div class="ref-list" data-aos="fade-up">
+      {% set refs_intl = [
+        ('6','International Monetary Fund. (2026). <em>World Economic Outlook, April 2026: Policy Pivots, Rising Debt</em>. IMF Publication Services.',
+         'https://www.imf.org/en/Publications/WEO','PIB México y EE.UU., inflación global, proyecciones 2026'),
+        ('7','World Bank. (2024). <em>Mexico Economic Monitor — Navigating Uncertainty</em>. The World Bank Group.',
+         'https://www.worldbank.org','Indicadores macroeconómicos México, nearshoring, IED'),
+        ('8','Bank for International Settlements. (2024). <em>Triennial Central Bank Survey: OTC Foreign Exchange Turnover</em>. BIS.',
+         'https://www.bis.org/statistics/rpfx22.htm','Mercado de derivados FX global, instrumentos OTC'),
+        ('9','Secretaría de Economía. (2025). <em>Inversión Extranjera Directa en México 2022–2025: El efecto nearshoring</em>. Gobierno de México.',
+         'https://www.economia.gob.mx','Flujos IED, impacto nearshoring en mercado de construcción'),
+      ] %}
+      {% for num, cit, url, nota in refs_intl %}
+      <div class="ref-item">
+        <div class="ref-num">{{ num }}</div>
+        <div class="ref-content">
+          <div class="ref-citation">{{ cit | safe }} Disponible en: <a href="{{ url }}" target="_blank">{{ url }}</a></div>
+          <div class="ref-tag"><i class="fa fa-tag"></i> {{ nota }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Financial market sources -->
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Mercados Financieros</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Bloomberg, Reuters y Bolsas</h2>
+    </div>
+
+    <div class="ref-list" data-aos="fade-up">
+      {% set refs_market = [
+        ('10','Bloomberg L.P. (2026). <em>MXN CURNCY — Mexican Peso / US Dollar Spot Rate</em> [Base de datos financiera]. Bloomberg Terminal.',
+         'https://www.bloomberg.com','TC spot histórico, volatilidad implícita MXN/USD'),
+        ('11','Bloomberg L.P. (2024). <em>ARAUCO CI — Arauco S.A. Credit Ratings and Financials</em> [Base de datos financiera]. Bloomberg Terminal.',
+         'https://www.bloomberg.com','Calificaciones crediticias, EBITDA histórico, deuda'),
+        ('12','Reuters. (2025, diciembre 15). <em>Arauco sees Mexico panel demand rising on nearshoring boom</em>. Thomson Reuters.',
+         'https://www.reuters.com','Proyecciones demanda tableros México, estrategia Arauco'),
+        ('13','MEXDER Mercado Mexicano de Derivados. (2026). <em>Especificaciones contrato de futuro USD/MXN</em>. MEXDER.',
+         'https://www.mexder.com.mx','Contratos futuros USD/MXN, tamaño, márgenes, liquidación'),
+        ('14','CME Group. (2026). <em>Mexican Peso Futures (MXN/USD) — Contract specifications</em>. Chicago Mercantile Exchange.',
+         'https://www.cmegroup.com','Futuros CME sobre peso mexicano, cotización USD/MXN'),
+      ] %}
+      {% for num, cit, url, nota in refs_market %}
+      <div class="ref-item">
+        <div class="ref-num">{{ num }}</div>
+        <div class="ref-content">
+          <div class="ref-citation">{{ cit | safe }} Disponible en: <a href="{{ url }}" target="_blank">{{ url }}</a></div>
+          <div class="ref-tag"><i class="fa fa-tag"></i> {{ nota }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Academic sources -->
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Literatura Académica</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Libros de Texto y Artículos Arbitrados</h2>
+    </div>
+
+    <div class="ref-list" data-aos="fade-up">
+      {% set refs_academic = [
+        ('15','Madura, J. (2021). <em>International financial management</em> (14th ed.). Cengage Learning.',
+         'https://www.cengage.com','Marco teórico exposición cambiaria (transacción, económica, traslación)'),
+        ('16','Hull, J. C. (2022). <em>Options, futures, and other derivatives</em> (11th ed.). Pearson Education.',
+         'https://www.pearson.com','Valuación de futuros, opciones y estrategias de cobertura FX'),
+        ('17','Shapiro, A. C. (2022). <em>Multinational financial management</em> (10th ed.). Wiley.',
+         'https://www.wiley.com','Administración financiera internacional, riesgo cambiario en MNCs'),
+        ('18','Eun, C. S., & Resnick, B. G. (2021). <em>International financial management</em> (9th ed.). McGraw-Hill.',
+         'https://www.mheducation.com','Paridad de tasas de interés, forward pricing, hedging strategies'),
+        ('19','Levi, M. D. (2019). <em>International finance: The markets and financial management of multinational business</em> (5th ed.). Routledge.',
+         'https://www.routledge.com','Exposición económica y gestión del riesgo cambiario en LATAM'),
+        ('20','Garman, M. B., & Kohlhagen, S. W. (1983). Foreign currency option values. <em>Journal of International Money and Finance, 2</em>(3), 231–237.',
+         'https://doi.org/10.1016/S0261-5606(83)80001-1','Modelo de valuación de opciones sobre divisas (Garman-Kohlhagen)'),
+      ] %}
+      {% for num, cit, url, nota in refs_academic %}
+      <div class="ref-item">
+        <div class="ref-num">{{ num }}</div>
+        <div class="ref-content">
+          <div class="ref-citation">{{ cit | safe }}</div>
+          <div class="ref-tag"><i class="fa fa-tag"></i> {{ nota }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Industry data -->
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Datos de Industria</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Estadísticas Sectoriales</h2>
+    </div>
+
+    <div class="ref-list" data-aos="fade-up">
+      {% set refs_industry = [
+        ('21','RISI / Fisher International. (2024). <em>Global Pulp & Paper Industry Report 2024</em>. Fisher International Inc.',
+         'https://www.fisherint.com','Ranking capacidad pulpa mundial, costos de producción comparativos'),
+        ('22','Trading Economics. (2026). <em>Mexico — Urea, Methanol, Phenol spot prices</em> [Base de datos]. Trading Economics.',
+         'https://tradingeconomics.com','Precios históricos insumos MDF: urea, metanol, fenol en USD'),
+        ('23','Statista. (2025). <em>Wood-based panel production in Mexico 2014–2025</em>. Statista GmbH.',
+         'https://www.statista.com','Estadísticas producción tableros México, tamaño de mercado'),
+        ('24','Food and Agriculture Organization of the United Nations [FAO]. (2024). <em>Forest Products Annual Market Review 2023–2024</em>. UNECE/FAO.',
+         'https://unece.org/forests/publications','Mercado global de productos forestales, tendencias de precio'),
+        ('25','Fitch Ratings. (2025, agosto). <em>Arauco — Rating Report: BBB, Outlook Stable</em>. Fitch Ratings Inc.',
+         'https://www.fitchratings.com','Análisis crediticio Arauco, factores de riesgo FX'),
+      ] %}
+      {% for num, cit, url, nota in refs_industry %}
+      <div class="ref-item">
+        <div class="ref-num">{{ num }}</div>
+        <div class="ref-content">
+          <div class="ref-citation">{{ cit | safe }} Disponible en: <a href="{{ url }}" target="_blank">{{ url }}</a></div>
+          <div class="ref-tag"><i class="fa fa-tag"></i> {{ nota }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- APA note -->
+    <div class="info-panel mt-4" style="margin-top:2rem" data-aos="fade-up">
+      <strong><i class="fa fa-info-circle"></i> Nota de citación:</strong>
+      Referencias elaboradas conforme a las normas <strong>APA 7ª edición</strong>
+      (American Psychological Association, 2020). Para fuentes consultadas en bases de datos financieras
+      (Bloomberg, Reuters), se utilizó la convención de citas para recursos electrónicos de suscripción.
+      Datos de la presentación corporativa de Arauco corresponden a información compartida por el socio formador
+      del proyecto en Mayo 2026 y tienen carácter académico exclusivo.
+    </div>
+
+  </div>
+</section>
+
+<script>document.body.dataset.page = 'references';</script>
+{% endblock %}

@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% block title %}Company Analysis · Arauco FX{% endblock %}
+{% block content %}
+<body data-page="company">
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow"><i class="fa fa-building"></i> Company Analysis</div>
+    <h1 class="page-hero-title">Arauco: Modelo de Negocio<br/>e Internacionalización</h1>
+    <p class="page-hero-sub">Análisis profundo de la estructura corporativa, cadena de valor y operaciones globales de la tercera empresa forestal más grande del mundo.</p>
+  </div>
+</section>
+
+<!-- ═══ OVERVIEW ═══ -->
+<section class="section">
+  <div class="container">
+
+    <div class="split-2" data-aos="fade-up">
+      <div>
+        <div class="section-eyebrow">Estructura Corporativa</div>
+        <h2 class="section-title" style="text-align:left">Grupo Angelini al mando</h2>
+        <p style="color:var(--gray-600); margin:1.25rem 0; line-height:1.8;">
+          Arauco es una filial del <strong>Grupo Angelini</strong>, uno de los conglomerados más importantes de Chile.
+          La cadena de control es: Angelini (75.17%) → <strong>AntarChile</strong> → <strong>Empresas Copec</strong>
+          (99.99% de Arauco). Esta estructura concentra el poder decisional y facilita el financiamiento a tasas preferenciales.
+        </p>
+        <p style="color:var(--gray-600); line-height:1.8; margin-bottom:1.5rem;">
+          Con más de <strong>50 años de historia</strong>, Arauco comenzó en el sur de Chile gestionando recursos
+          forestales renovables. Hoy opera en cuatro grandes segmentos: celulosa, maderas, paneles y energía,
+          maximizando el valor integral de cada árbol.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1970s</div>
+            <div class="timeline-title">Fundación en Chile</div>
+            <div class="timeline-content">Inicio de operaciones forestales en el sur de Chile bajo el Grupo Angelini.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1990s</div>
+            <div class="timeline-title">Expansión LATAM</div>
+            <div class="timeline-content">Ingreso a Brasil, Argentina y Uruguay con plantaciones de eucalipto y pino.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2000s</div>
+            <div class="timeline-title">Entrada a Norteamérica</div>
+            <div class="timeline-content">Adquisición de plantas en EE.UU. y Canadá. Primer productor de paneles en Norteamérica.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2010s</div>
+            <div class="timeline-title">Liderazgo en México</div>
+            <div class="timeline-content">Establece planta MDF en Durango. Se convierte en #1 de tableros en México.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2024–2026</div>
+            <div class="timeline-title">Proyecto Vikingo: $300 MDD</div>
+            <div class="timeline-content">Inversión en Zitácuaro, Michoacán: la planta MDF más grande de México. Inicio Q1-2026.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="chart-wrap mb-3" data-aos="fade-left">
+          <div class="chart-title"><i class="fa fa-chart-pie" style="color:var(--green)"></i> Ingresos por Región (2025 LTM)</div>
+          <canvas id="regionChart" height="260"></canvas>
+          <div class="donut-legend mt-2">
+            {% for label, pct, color in [
+              ('Norte América','37%','#1C3A1A'),
+              ('LATAM','38%','#2D5A1B'),
+              ('Asia & Oceanía','19%','#6B8E23'),
+              ('Europa','6%','#8FAF5A'),
+              ('Otros','1%','#9AA3AE')
+            ] %}
+            <div class="legend-item">
+              <div class="legend-dot" style="background:{{ color }}"></div>
+              <span class="legend-label">{{ label }}</span>
+              <span class="legend-value">{{ pct }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Products -->
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Cadena de Valor</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Cuatro Segmentos, Un Bosque</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
+        Arauco maximiza el uso integral del recurso forestal: desde la fibra hasta la energía.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      {% for icon, title, text, tags in [
+        ('fa-flask','Celulosa (Pulpa)','Producción de BHKP (eucalipto), BSKP (pino), fluff pulp y dissolving pulp. 50% de los ingresos totales. Ventas principalmente en Asia y Europa.',['BHKP','BSKP','Fluff','DP']),
+        ('fa-tree','Maderas','Madera aserrada, kiln dried lumber, plywood y productos remanufacturados. 3.8M m³ de producción en 2021. Principal mercado: EE.UU. y Canadá.',['Sawn Timber','KD Lumber','Plywood','Reman']),
+        ('fa-th-large','Paneles','MDF, PBO/MDP y melamina. #1 en México, EE.UU., Canadá y LATAM. Mercado de melamina con CAGR 12% en México (2014-2023).',['MDF','PBO/MDP','Melamina','Tableros']),
+        ('fa-bolt','Energía Renovable','436 MW de excedente energético desde biomasa (corteza, aserrín, licor negro). Primera empresa forestal certificada carbono neutral.',['Biomasa','436 MW','Carbono Neutral','Nature+'])
+      ] %}
+      <div class="card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
+        <div class="card-icon"><i class="fa {{ icon }}"></i></div>
+        <h3 class="card-title">{{ title }}</h3>
+        <p class="card-text">{{ text }}</p>
+        <div class="tags">{% for t in tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Mexico operations -->
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Operaciones en México</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">
+        #1 en Tableros · Tres Plantas · $345 MDD en Inversiones
+      </h2>
+    </div>
+
+    <div class="table-wrap mb-3" data-aos="fade-up">
+      <table class="premium-table">
+        <thead>
+          <tr>
+            <th>Planta / Proyecto</th>
+            <th>Ubicación</th>
+            <th>Producto</th>
+            <th>Inversión</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Planta Durango</strong></td><td>Durango, Dgo.</td><td>MDF</td><td>—</td><td><span class="badge badge-green">Operando</span></td></tr>
+          <tr><td><strong>Proyecto Alacran</strong></td><td>Durango, Dgo.</td><td>Centro Impregnación + Valor Agregado</td><td>$40 MMD</td><td><span class="badge badge-green">En ejecución</span></td></tr>
+          <tr><td><strong>Planta Cuautitlán</strong></td><td>Estado de México</td><td>Pallets (2.5M unidades)</td><td>—</td><td><span class="badge badge-green">Operando</span></td></tr>
+          <tr><td><strong>Proyecto Embalaje EdoMex</strong></td><td>Estado de México</td><td>Nueva Planta Pallets</td><td>$5 MDD</td><td><span class="badge badge-yellow">En desarrollo</span></td></tr>
+          <tr><td><strong>Proyecto Vikingo MDF ⭐</strong></td><td>Zitácuaro, Michoacán</td><td>MDF (Planta más grande de México)</td><td><strong>$300 MDD</strong></td><td><span class="badge badge-blue">Inicio Q1-2026</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="split-2" style="margin-top:2rem">
+      <div class="chart-wrap" data-aos="fade-right">
+        <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--green)"></i> Producción & Ventas Madera (M m³)</div>
+        <canvas id="woodVolChart" height="250"></canvas>
+      </div>
+      <div class="chart-wrap" data-aos="fade-left">
+        <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--green)"></i> EBITDA Ajustado Histórico (US$ M)</div>
+        <canvas id="ebitdaChart" height="250"></canvas>
+      </div>
+    </div>
+
+    <!-- Cost structure highlight -->
+    <div class="highlight-block mt-4" style="margin-top:3rem" data-aos="fade-up">
+      <h3>Estructura de Costos Variables — MDF México</h3>
+      <p style="margin-bottom:1.5rem;">
+        El principal insumo para MDF es la <strong>resina UF (urea-formaldehído)</strong>, cotizada en USD.
+        La urea representa 45-55% del costo de resina, seguida por formaldehído (25-30%) y metanol (8-12%).
+        Variaciones en el tipo de cambio USD/MXN impactan directamente el margen operativo.
+      </p>
+      <div class="cards-grid" style="grid-template-columns:repeat(4,1fr); gap:1rem">
+        {% for comp, pct, desc in [
+          ('Urea','45–55%','Principal insumo base — commodity petroquímico'),
+          ('Formaldehído','25–30%','Reacciona con urea para formar UF'),
+          ('Metanol','8–12%','Feedstock del formaldehído'),
+          ('Logística','3–5%','Producción, manejo y transporte')
+        ] %}
+        <div style="background:rgba(255,255,255,.08); border-radius:12px; padding:1.25rem; border:1px solid rgba(255,255,255,.12)">
+          <div style="font-size:1.4rem; font-weight:700; color:var(--sage)">{{ pct }}</div>
+          <div style="font-weight:600; color:var(--white); margin:.3rem 0">{{ comp }}</div>
+          <div style="font-size:.82rem; color:rgba(255,255,255,.6)">{{ desc }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>document.body.dataset.page = 'company';</script>
+{% endblock %}
