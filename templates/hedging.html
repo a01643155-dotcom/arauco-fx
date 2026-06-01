@@ -6,29 +6,28 @@
 <section class="page-hero">
   <div class="page-hero-inner">
     <div class="page-hero-eyebrow"><i class="fa fa-shield-alt"></i> Hedging Strategy</div>
-    <h1 class="page-hero-title">Estrategias de Cobertura<br/>para Arauco México</h1>
-    <p class="page-hero-sub">Diseño, comparativa y recomendación de instrumentos de cobertura cambiaria: forwards, futuros, swaps y cobertura natural. Cuál es la mejor opción dado el perfil de Arauco.</p>
+    <h1 class="page-hero-title">Hedging Strategies<br/>for Arauco Mexico</h1>
+    <p class="page-hero-sub">Design, comparison and recommendation of currency hedging instruments: forwards, futures, swaps and natural hedging. Which is the best option given Arauco's profile.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
 
-    <!-- Current position -->
     <div class="split-2">
       <div data-aos="fade-right">
-        <div class="section-eyebrow">Posición Actual</div>
-        <h2 class="section-title" style="text-align:left">Arauco hoy: Sin derivados financieros en México</h2>
+        <div class="section-eyebrow">Current Position</div>
+        <h2 class="section-title" style="text-align:left">Arauco today: No financial derivatives in Mexico</h2>
         <p style="color:var(--gray-600); line-height:1.8; margin:1.25rem 0">
-          Durante la interacción con el socio formador de este proyecto, se confirmó que
-          <strong>Arauco México no utiliza actualmente derivados financieros</strong> para cubrir su
-          exposición cambiaria. La gestión del riesgo FX se realiza principalmente mediante:
+          During interaction with the corporate partner of this project, it was confirmed that
+          <strong>Arauco Mexico does not currently use financial derivatives</strong> to hedge its
+          currency exposure. FX risk management is conducted primarily through:
         </p>
         <div class="cards-grid" style="grid-template-columns:1fr">
           {% for icon, title, text in [
-            ('fa-balance-scale','Cobertura Natural','Parte del costo en USD se compensa con ingresos en USD de exportaciones de madera aserrada a EE.UU. y Canadá (38% de ventas de madera van a Norteamérica).'),
-            ('fa-landmark','Financiamiento en Moneda Local','Deuda bancaria en MXN para financiar parte del capital de trabajo, reduciendo el descalce monetario en el balance.'),
-            ('fa-handshake','Contratos a Precio Fijo','Acuerdos con proveedores de resinas a precio fijo en USD por períodos de 3-6 meses, reduciendo la volatilidad de corto plazo.')
+            ('fa-balance-scale','Natural Hedging','Part of the USD cost is offset by USD revenues from timber exports to the USA and Canada (38% of timber sales go to North America).'),
+            ('fa-landmark','Local Currency Financing','MXN bank debt to finance part of working capital, reducing currency mismatch on the balance sheet.'),
+            ('fa-handshake','Fixed-Price Contracts','Agreements with resin suppliers at fixed USD prices for 3-6 month periods, reducing short-term volatility.')
           ] %}
           <div class="card" style="padding:1.25rem" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 60 }}">
             <div style="display:flex; gap:1rem; align-items:flex-start">
@@ -45,22 +44,22 @@
 
       <div data-aos="fade-left">
         <div class="highlight-block">
-          <h3>¿Por qué Arauco no usa derivados?</h3>
+          <h3>Why doesn't Arauco use derivatives?</h3>
           <p style="margin-bottom:1rem">
-            Las razones más comunes en empresas similares para no usar derivados incluyen:
+            The most common reasons for similar companies not using derivatives include:
           </p>
           <ul style="color:rgba(255,255,255,.8); line-height:2; padding-left:1.2rem; font-size:.92rem">
-            <li>Complejidad contable (IFRS 9 — hedge accounting)</li>
-            <li>Costo de la prima en opciones vs. margen operativo</li>
-            <li>Mercado de derivados MXN menos líquido que EE.UU./Europa</li>
-            <li>Cobertura natural considerada suficiente por la dirección</li>
-            <li>Capacidad técnica interna para gestión activa de derivados</li>
+            <li>Accounting complexity (IFRS 9 — hedge accounting)</li>
+            <li>Option premium cost vs. operating margin</li>
+            <li>MXN derivatives market less liquid than USA/Europe</li>
+            <li>Natural hedging considered sufficient by management</li>
+            <li>Internal technical capacity for active derivatives management</li>
           </ul>
           <div class="divider-dark"></div>
           <p style="font-size:.88rem">
-            Sin embargo, con el <strong>Proyecto Vikingo ($300 MDD)</strong> y la nueva capacidad instalada en 2026,
-            la exposición neta en USD crecerá significativamente, lo que podría justificar
-            la implementación de una política formal de cobertura con derivados.
+            However, with <strong>Project Vikingo ($300M USD)</strong> and new installed capacity in 2026,
+            net USD exposure will grow significantly, which could justify
+            implementing a formal hedging policy with derivatives.
           </p>
         </div>
       </div>
@@ -68,75 +67,73 @@
 
     <div class="divider"></div>
 
-    <!-- Payoff charts -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Análisis Comparativo</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Diagrama de Payoff: Cobertura vs. Sin Cobertura</h2>
+      <div class="section-eyebrow" data-aos="fade-up">Comparative Analysis</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Payoff Diagram: Hedged vs. Unhedged</h2>
       <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
-        Escenario: Arauco necesita comprar US$1,000,000 para pagar insumos en 3 meses.
+        Scenario: Arauco needs to buy US$1,000,000 to pay for inputs in 3 months.
       </p>
     </div>
 
     <div class="split-2">
       <div class="chart-wrap" data-aos="fade-right">
-        <div class="chart-title"><i class="fa fa-chart-line" style="color:var(--green)"></i> Costo Neto por Instrumento (MXN)</div>
+        <div class="chart-title"><i class="fa fa-chart-line" style="color:var(--green)"></i> Net Cost by Instrument (MXN)</div>
         <canvas id="payoffChart" height="280"></canvas>
         <p style="font-size:.78rem; color:var(--gray-600); margin-top:.75rem">
-          Forward a 17.50 MXN/USD · Call OTM con K=18.00, prima estimada 0.085 USD/MXN.
-          Nocional: US$1,000,000. Costo fijo con forward independiente del TC spot al vencimiento.
+          Forward at 17.50 MXN/USD · OTM Call with K=18.00, estimated premium 0.085 USD/MXN.
+          Notional: US$1,000,000. Fixed cost with forward regardless of spot TC at expiration.
         </p>
       </div>
       <div class="chart-wrap" data-aos="fade-left">
-        <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--forest)"></i> Costo Estimado de Cobertura (% del nocional)</div>
+        <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--forest)"></i> Estimated Hedging Cost (% of notional)</div>
         <canvas id="hedgeCostChart" height="280"></canvas>
       </div>
     </div>
 
     <div class="divider"></div>
 
-    <!-- Instruments comparison -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Instrumentos Disponibles</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Comparativa de Estrategias</h2>
+      <div class="section-eyebrow" data-aos="fade-up">Available Instruments</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Strategy Comparison</h2>
     </div>
 
     <div class="hedge-grid">
       {% for title, sub, rows in [
-        ('Forward OTC USD/MXN','Contrato a plazo directo con banco',[
-          ('Tipo','Obligación bilateral (sin costo inicial)'),
-          ('Plazo típico','1–12 meses'),
-          ('TC fijado','Paridad de Tasas de Interés: F = S×[(1+r_MXN)/(1+r_USD)]^t'),
-          ('Ventaja','Certeza absoluta del TC; sin costo de prima'),
-          ('Desventaja','No se beneficia si el TC mejora; riesgo de contraparte'),
-          ('Mercado','OTC bilateral con bancos (BBVA, Santander, Banamex)'),
-          ('Ideal para Arauco','Pago de insumos USD conocidos con anticipación de 1-6 meses'),
+        ('OTC USD/MXN Forward','Direct forward contract with a bank',[
+          ('Type','Bilateral obligation (no upfront cost)'),
+          ('Typical tenor','1–12 months'),
+          ('Fixed TC','Interest Rate Parity: F = S×[(1+r_MXN)/(1+r_USD)]^t'),
+          ('Advantage','Absolute TC certainty; no premium cost'),
+          ('Disadvantage','No benefit if TC improves; counterparty risk'),
+          ('Market','OTC bilateral with banks (BBVA, Santander, Banamex)'),
+          ('Ideal for Arauco','USD input payments known 1-6 months in advance'),
         ]),
-        ('Futuro MEXDER','Contratos estandarizados en bolsa mexicana',[
-          ('Tipo','Obligación estandarizada; se liquida diariamente'),
-          ('Tamaño contrato','10,000 USD por contrato'),
-          ('TC referencia','Cotiza MXN/USD — acuerdo de compra de USD a precio fijo'),
-          ('Ventaja','Sin riesgo de contraparte (MEXDER como clearing)'),
-          ('Desventaja','Tamaños fijos, márgenes diarios (mark-to-market), menor liquidez'),
-          ('Costo estimado','Comisión ~0.10% + margen inicial 5-8% del nocional'),
-          ('Ideal para Arauco','Cobertura de transacciones recurrentes de tamaño estándar'),
+        ('MEXDER Future','Standardized contracts on Mexico exchange',[
+          ('Type','Standardized obligation; daily settlement'),
+          ('Contract size','10,000 USD per contract'),
+          ('Reference TC','Quoted MXN/USD — agreement to buy USD at fixed price'),
+          ('Advantage','No counterparty risk (MEXDER as clearing house)'),
+          ('Disadvantage','Fixed sizes, daily margins (mark-to-market), lower liquidity'),
+          ('Estimated cost','Commission ~0.10% + initial margin 5-8% of notional'),
+          ('Ideal for Arauco','Hedging recurring standard-size transactions'),
         ]),
-        ('Opción CALL USD OTC','Derecho a comprar USD al precio de ejercicio',[
-          ('Tipo','Derecho, no obligación; pago de prima upfront'),
-          ('Posición Arauco','LARGA (compra la opción — protección al alza del TC)'),
-          ('Prima típica','0.3–1.5% del nocional (según plazo y moneyness)'),
-          ('Ventaja','Protección si TC sube; se beneficia si TC baja (no ejerce)'),
-          ('Desventaja','Costo de prima pagado independientemente del resultado'),
-          ('Strike recomendado','OTM cerca de ATM (ej. K=18.00 con spot en 17.20)'),
-          ('Ideal para Arauco','Volatilidad alta y expectativa de MXN estable o apreciación'),
+        ('OTC USD CALL Option','Right to buy USD at the strike price',[
+          ('Type','Right, not obligation; upfront premium payment'),
+          ('Arauco position','LONG (buys the option — protection against TC rise)'),
+          ('Typical premium','0.3–1.5% of notional (depending on tenor and moneyness)'),
+          ('Advantage','Protection if TC rises; benefits if TC falls (does not exercise)'),
+          ('Disadvantage','Premium cost paid regardless of outcome'),
+          ('Recommended strike','OTM near ATM (e.g., K=18.00 with spot at 17.20)'),
+          ('Ideal for Arauco','High volatility and expectation of stable or appreciating MXN'),
         ]),
-        ('Cobertura Natural + Swap','Estructura de largo plazo sin derivados formales',[
-          ('Tipo','Gestión operativa del balance de divisas'),
-          ('Mecanismo','Ingresos exportaciones USD compensan pagos insumos USD'),
-          ('Swap','Interest Rate Swap si hay deuda flotante USD convertida a tasa fija'),
-          ('Ventaja','Sin costo de prima, sin contabilidad especial de coberturas IFRS 9'),
-          ('Desventaja','Cobertura parcial — no elimina exposición si hay descalce neto'),
-          ('Situación Arauco','Aplicada actualmente; suficiente mientras exposición sea moderada'),
-          ('Ideal para Arauco','Estrategia de largo plazo como complemento a instrumentos OTC'),
+        ('Natural Hedge + Swap','Long-term structure without formal derivatives',[
+          ('Type','Operational currency balance management'),
+          ('Mechanism','USD export revenues offset USD input payments'),
+          ('Swap','Interest Rate Swap if there is floating USD debt converted to fixed rate'),
+          ('Advantage','No premium cost, no special IFRS 9 hedge accounting'),
+          ('Disadvantage','Partial hedging — does not eliminate exposure if net mismatch exists'),
+          ('Arauco status','Currently applied; sufficient while exposure is moderate'),
+          ('Ideal for Arauco','Long-term strategy as complement to OTC instruments'),
         ]),
       ] %}
       <div class="hedge-card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
@@ -158,22 +155,21 @@
 
     <div class="divider"></div>
 
-    <!-- Recommendation -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Recomendación Estratégica</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">La Mejor Estrategia para Arauco</h2>
+      <div class="section-eyebrow" data-aos="fade-up">Strategic Recommendation</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">The Best Strategy for Arauco</h2>
     </div>
 
     <div class="highlight-block" data-aos="fade-up">
-      <h3>🌿 Estrategia Recomendada: Forward + Cobertura Natural (Híbrida)</h3>
+      <h3>🌿 Recommended Strategy: Forward + Natural Hedging (Hybrid)</h3>
       <p style="margin-bottom:1.5rem">
-        Dada la exposición operativa corta en USD de US$120–150M/año, la política más eficiente para Arauco México sería:
+        Given the short USD operating exposure of US$120–150M/year, the most efficient policy for Arauco Mexico would be:
       </p>
       <div class="cards-grid" style="grid-template-columns:repeat(3,1fr); gap:1.25rem">
         {% for num, title, text in [
-          ('01','Cobertura Natural (siempre)','Maximizar el descalce natural entre ingresos de exportación en USD y pagos de insumos en USD. Objetivo: cubrir al menos 40-50% de la exposición bruta.'),
-          ('02','Forwards OTC (core)','Para la exposición residual conocida con ≥60 días de anticipación, contratar forwards OTC con bancos locales a plazos de 1-6 meses. Costo: cero prima, TC garantizado.'),
-          ('03','Opciones CALL (eventualmente)','En períodos de alta volatilidad e incertidumbre direccional, sustituir forwards por opciones CALL OTM para mantener beneficio si el MXN se aprecia. Aplica post-Zitácuaro 2026.'),
+          ('01','Natural Hedging (always)','Maximize the natural offset between USD export revenues and USD input payments. Target: cover at least 40-50% of gross exposure.'),
+          ('02','OTC Forwards (core)','For residual known exposure with ≥60 days notice, contract OTC forwards with local banks for 1-6 month tenors. Cost: zero premium, guaranteed TC.'),
+          ('03','CALL Options (eventually)','In periods of high volatility and directional uncertainty, replace forwards with OTM CALL options to retain upside if MXN appreciates. Applies post-Zitácuaro 2026.'),
         ] %}
         <div style="background:rgba(255,255,255,.1); border-radius:var(--radius-md); padding:1.5rem; border:1px solid rgba(255,255,255,.15)">
           <div style="font-size:2rem; font-weight:700; color:var(--sage); line-height:1; margin-bottom:.5rem">{{ num }}</div>
@@ -187,15 +183,15 @@
     <div class="table-wrap mt-4" style="margin-top:2rem" data-aos="fade-up">
       <table class="premium-table">
         <thead>
-          <tr><th>Instrumento</th><th>% Exposición Cubierta</th><th>Costo</th><th>Complejidad</th><th>Recomendado</th></tr>
+          <tr><th>Instrument</th><th>% Exposure Covered</th><th>Cost</th><th>Complexity</th><th>Recommended</th></tr>
         </thead>
         <tbody>
           {% for inst, pct, costo, comp, rec, rclass in [
-            ('Cobertura Natural','40–50%','Ninguno','Baja','✅ Sí (siempre)','badge-green'),
-            ('Forward OTC 1–6m','30–40%','Ninguno','Baja','✅ Sí (core)','badge-green'),
-            ('Futuro MEXDER','10–15%','0.1% + margen','Media','⚠️ Complementario','badge-yellow'),
-            ('Opción CALL OTM','10–20%','0.5–1.5% prima','Media-Alta','⚠️ Alta volatilidad','badge-yellow'),
-            ('Swap de divisas','Largo plazo','Costo financiero','Alta','❌ No prioritario','badge-red'),
+            ('Natural Hedging','40–50%','None','Low','✅ Yes (always)','badge-green'),
+            ('OTC Forward 1–6m','30–40%','None','Low','✅ Yes (core)','badge-green'),
+            ('MEXDER Future','10–15%','0.1% + margin','Medium','⚠️ Complementary','badge-yellow'),
+            ('OTM CALL Option','10–20%','0.5–1.5% premium','Medium-High','⚠️ High volatility','badge-yellow'),
+            ('Currency Swap','Long-term','Financing cost','High','❌ Not a priority','badge-red'),
           ] %}
           <tr>
             <td><strong>{{ inst }}</strong></td>
