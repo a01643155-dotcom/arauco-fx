@@ -220,20 +220,19 @@
 
     <div class="team-grid">
       {% set members = [
-        ('Issabela Rosales',  'IR', 'Financial Analysis'),
-        ('María Fernanda Pérez',    'MF', 'FX Strategy'),
-        ('Roxana Cruz',       'RC', 'Macroeconomic Research'),
-        ('Daniela Hernández', 'DH', 'Industry Analysis'),
-        ('Martín Espejo',     'ME', 'Hedging & Derivatives'),
+('Issabela Rosales Hawa',       'IR', 'A01642432'),
+('María Fernanda Pérez Santes', 'MF', 'A01643155'),
+('Roxana Cruz Hernández',       'RC', 'A01540660'),
+('Daniela Hernández Martínez',  'DH', 'A01613967'),
+('Martín Espejo',               'ME', 'A01642331'),
       ] %}
-      {% for name, initials, role in members %}
+      {% for name, initials, matricula in members %}
       <div class="team-card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
         <div class="team-avatar">
-          <!-- Replace src with actual photo: <img src="{{ url_for('static', filename='img/{{ initials|lower }}.jpg') }}" alt="{{ name }}"/> -->
           <span class="team-initials">{{ initials }}</span>
         </div>
         <div class="team-name">{{ name }}</div>
-        <div class="team-role">{{ role }}</div>
+        <div class="team-role">{{ matricula }}</div>
       </div>
       {% endfor %}
     </div>
