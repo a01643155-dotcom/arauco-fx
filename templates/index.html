@@ -229,7 +229,7 @@
       {% for name, initials, matricula in members %}
       <div class="team-card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
         <div class="team-avatar">
-          <span class="team-initials">{{ initials }}</span>
+          <img src="{{ url_for('static', filename='images/' + initials|lower + '.jpg') }}" alt="{{ name }}">
         </div>
         <div class="team-name">{{ name }}</div>
         <div class="team-role">{{ matricula }}</div>
