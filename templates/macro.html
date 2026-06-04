@@ -38,7 +38,7 @@
 
     <!-- USD/MXN chart -->
     <div class="split-2">
-      <div class="chart-wrap" data-aos="fade-right">
+      <div class="chart-wrap" >
         <div class="chart-title"><i class="fa fa-exchange-alt" style="color:var(--wood)"></i> Evolución USD/MXN (2019–2025E)</div>
         <canvas id="usdmxnChart" height="260"></canvas>
         <p style="font-size:.78rem; color:var(--gray-600); margin-top:.75rem">
@@ -96,7 +96,7 @@
           </table>
         </div>
       </div>
-      <div class="chart-wrap" data-aos="fade-left">
+      <div class="chart-wrap" >
         <div class="chart-title"><i class="fa fa-percent" style="color:var(--forest)"></i> Tasas Banxico e Inflación México (%)</div>
         <canvas id="macroMxChart" height="260"></canvas>
       </div>
@@ -106,7 +106,7 @@
 
     <!-- Lumber prices & nearshoring -->
     <div class="split-2">
-      <div class="chart-wrap" data-aos="fade-right">
+      <div class="chart-wrap" >
         <div class="chart-title"><i class="fa fa-tree" style="color:var(--olive)"></i> Índice Precio Madera Aserrada (USD/MBF)</div>
         <canvas id="lumberChart" height="250"></canvas>
         <p style="font-size:.78rem; color:var(--gray-600); margin-top:.75rem">
@@ -180,6 +180,7 @@
 
 {% block extra_js %}
 <script>
+document.addEventListener("DOMContentLoaded", function() {
 // USD/MXN historical chart
 const fxCtx = document.getElementById('usdmxnChart');
 if(fxCtx) new Chart(fxCtx, {
@@ -214,6 +215,7 @@ if(lCtx) new Chart(lCtx, {
     ]
   },
   options:{plugins:{legend:{labels:{font:{size:11}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
+});
 });
 </script>
 {% endblock %}

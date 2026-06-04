@@ -23,7 +23,7 @@
     </div>
 
     <div class="split-2">
-      <div class="chart-wrap" data-aos="fade-right">
+      <div class="chart-wrap" >
         <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--green)"></i> Capacidad de Pulpa Global (Miles ton)</div>
         <canvas id="pulpCapChart" height="280"></canvas>
         <p style="font-size:.78rem; color:var(--gray-600); margin-top:.75rem">
@@ -92,7 +92,7 @@
 
     <!-- Melamine growth chart -->
     <div class="split-2" style="margin-top:2rem">
-      <div class="chart-wrap" data-aos="fade-right">
+      <div class="chart-wrap" >
         <div class="chart-title"><i class="fa fa-chart-line" style="color:var(--wood)"></i> Mercado Melamina México — CAGR 12% (2014–2023)</div>
         <canvas id="melamineMxChart" height="250"></canvas>
         <p style="font-size:.78rem; color:var(--gray-600); margin-top:.75rem">
@@ -162,6 +162,7 @@
 
 {% block extra_js %}
 <script>
+document.addEventListener("DOMContentLoaded", function() {
 // Pulp capacity chart
 const pCtx = document.getElementById('pulpCapChart');
 if(pCtx) new Chart(pCtx, {
@@ -183,6 +184,7 @@ if(mCtx) new Chart(mCtx, {
       borderColor:'#2A3D1F',backgroundColor:'rgba(42,61,31,0.1)',borderWidth:2.5,fill:true,tension:0.4,pointRadius:3}]
   },
   options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
+});
 });
 </script>
 {% endblock %}

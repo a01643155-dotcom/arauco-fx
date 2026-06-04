@@ -140,11 +140,11 @@
     </div>
 
     <div class="split-2" style="margin-top:2rem">
-      <div class="chart-wrap" data-aos="fade-right">
+      <div class="chart-wrap" >
         <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--green)"></i> Producción & Ventas Madera (M m³)</div>
         <canvas id="woodVolChart" height="250"></canvas>
       </div>
-      <div class="chart-wrap" data-aos="fade-left">
+      <div class="chart-wrap" >
         <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--green)"></i> EBITDA Ajustado Histórico (US$ M)</div>
         <canvas id="ebitdaChart" height="250"></canvas>
       </div>
@@ -181,6 +181,7 @@
 
 {% block extra_js %}
 <script>
+document.addEventListener("DOMContentLoaded", function() {
 // Region chart
 const rCtx = document.getElementById('regionChart');
 if(rCtx) new Chart(rCtx, {
@@ -220,6 +221,7 @@ if(eCtx) new Chart(eCtx, {
     }]
   },
   options:{plugins:{legend:{labels:{font:{size:11}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
+});
 });
 </script>
 {% endblock %}

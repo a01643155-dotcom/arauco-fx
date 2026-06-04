@@ -458,3 +458,56 @@ a    { text-decoration:none; color:inherit; }
 .biz-icon { font-size: 1.5rem; color: var(--forest); margin-bottom: .75rem; }
 .biz-title { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--forest); margin-bottom: .4rem; }
 .biz-text { font-size: .83rem; color: var(--gray-600); line-height: 1.6; }
+
+/* ── CLEANUP FIXES ─────────────────────────────────────────────── */
+
+/* Include h4 in serif font */
+h4 { font-family: var(--font-serif); }
+
+/* Hedge grid — max 2 cols to avoid cramping */
+.hedge-grid {
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)) !important;
+}
+
+/* Hedge row — fix label width */
+.hedge-row-label {
+  min-width: 150px !important;
+  flex-shrink: 0;
+}
+
+/* Chart wraps — ensure always visible */
+.chart-wrap {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+/* Section titles bigger and more prominent */
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+}
+
+/* Page hero always full height */
+.page-hero { min-height: 55vh !important; }
+
+/* Ensure chart canvas is always visible */
+canvas {
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* Nav links on mobile */
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--cream);
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(42,61,31,.1);
+    box-shadow: 0 8px 24px rgba(42,61,31,.1);
+    z-index: 999;
+  }
+  .nav-links.open { display: flex; }
+}

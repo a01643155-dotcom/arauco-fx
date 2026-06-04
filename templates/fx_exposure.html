@@ -26,7 +26,7 @@
 
     <!-- Cost structure + Scenario forecast -->
     <div class="split-2">
-      <div class="chart-wrap" data-aos="fade-right">
+      <div class="chart-wrap" >
         <div class="chart-title"><i class="fa fa-chart-pie" style="color:var(--wood)"></i> Estructura de Costos — Plantas MDF México</div>
         <canvas id="costStructureChart" height="260"></canvas>
         <div class="donut-legend mt-2">
@@ -49,7 +49,7 @@
         </p>
       </div>
 
-      <div class="chart-wrap" data-aos="fade-left">
+      <div class="chart-wrap" >
         <div class="chart-title"><i class="fa fa-chart-line" style="color:var(--forest)"></i> Pronóstico USD/MXN — Tres Escenarios 2026</div>
         <canvas id="fxScenarioChart" height="260"></canvas>
         <div style="display:flex; gap:.75rem; flex-wrap:wrap; margin-top:.75rem">
@@ -104,7 +104,7 @@
     </div>
 
     <div class="split-2">
-      <div class="chart-wrap" data-aos="fade-right">
+      <div class="chart-wrap" >
         <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--forest)"></i> Impacto en EBITDA por Cambio en TC (US$ M)</div>
         <canvas id="sensitivityChart" height="260"></canvas>
       </div>
@@ -197,6 +197,7 @@
 
 {% block extra_js %}
 <script>
+document.addEventListener("DOMContentLoaded", function() {
 // Cost structure donut
 const csCtx = document.getElementById('costStructureChart');
 if(csCtx) new Chart(csCtx, {
@@ -231,6 +232,7 @@ if(senCtx) new Chart(senCtx, {
       backgroundColor:['rgba(61,90,46,0.8)','rgba(61,90,46,0.6)','rgba(122,140,94,0.5)','rgba(168,91,58,0.6)','rgba(168,91,58,0.8)','rgba(168,91,58,0.95)'],borderRadius:4}]
   },
   options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
+});
 });
 </script>
 {% endblock %}
