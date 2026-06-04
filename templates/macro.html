@@ -1,221 +1,207 @@
 {% extends "base.html" %}
-{% block title %}Macroeconomic Factors · Arauco FX{% endblock %}
+{% block title %}Macro Factors · Arauco FX{% endblock %}
 {% block content %}
+
 <section class="page-hero">
   <div class="page-hero-bg" style="background-image:url('/static/images/Bosque2.jpg')"></div>
   <div class="page-hero-inner">
     <div class="page-hero-eyebrow"><i class="fa fa-chart-line"></i> Macroeconomic Factors</div>
     <h1 class="page-hero-title">Macroeconomic Environment<br/>&amp; USD/MXN Drivers</h1>
-    <p class="page-hero-sub">Inflation, interest rates, nearshoring and economic cycles affecting Arauco's operations in Mexico.</p>
+    <p class="page-hero-sub">Inflation, interest rates, nearshoring and economic cycles affecting Arauco operations in Mexico and their impact on currency exposure.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
 
-    <!-- Key macro indicators -->
     <div class="section-header">
       <div class="section-eyebrow" data-aos="fade-up">Key Indicators 2025–2026</div>
       <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">The Mexico–U.S. Macroeconomic Context</h2>
     </div>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1.25rem; margin-bottom:3rem">
-      {% for val, label, sub, color in [
-        ('17.20','TC Spot USD/MXN','Referencia Mayo 2026','var(--wood)'),
-        ('8.50%','Tasa Banxico','Objetivo 2025E','var(--forest)'),
-        ('4.50%','Tasa Fed','FOMC Mayo 2026','var(--green)'),
-        ('3.80%','Inflación MX','INEGI Mar 2026','var(--olive)'),
-        ('2.40%','Inflación EE.UU.','CPI BLS Mar 2026','var(--sage)'),
-        ('+2.4%','PIB México 2025E','FMI WEO Abr 2026','var(--wood-lt)')
-      ] %}
-      <div class="stat-card" data-aos="zoom-in" data-aos-delay="{{ loop.index0 * 40 }}">
-        <div class="stat-number" style="color:{{ color }}">{{ val }}</div>
-        <div class="stat-label">{{ label }}</div>
-        <div class="stat-delta">{{ sub }}</div>
-      </div>
-      {% endfor %}
-    </div>
-
-    <!-- USD/MXN chart -->
     <div class="split-2">
-      <div class="chart-wrap" >
-        <div class="chart-title"><i class="fa fa-exchange-alt" style="color:var(--wood)"></i> USD/MXN Evolution (2019–2025E)</div>
+      <div class="chart-wrap">
+        <div class="chart-title"><i class="fa fa-exchange-alt" style="color:var(--wood)"></i> USD/MXN Historical Evolution (2019–2026E)</div>
         <canvas id="usdmxnChart" height="260"></canvas>
-        <p style="font-size:.78rem; color:var(--gray-600); margin-top:.75rem">
-          Source: Banxico (2026); Banco Mundial (2024); Bloomberg (2026). TC promedio anual y fin de año.
-        </p>
+        <p style="font-size:.78rem;color:var(--gray-600);margin-top:.75rem">Source: Banxico, Bloomberg. Fix exchange rate. 2026E = market consensus estimate.</p>
       </div>
-      <div data-aos="fade-left">
+
+      <div>
         <div class="section-eyebrow">USD/MXN Analysis</div>
-        <h3 class="font-head" style="font-size:1.5rem; color:var(--forest); margin-bottom:1rem">
-          El peso: entre la fortaleza y la volatilidad
+        <h3 class="font-head" style="font-size:1.5rem;color:var(--forest);margin-bottom:1rem">
+          Structural drivers of the peso
         </h3>
-        <p style="color:var(--gray-600); line-height:1.8; margin-bottom:1rem">
-          El MXN tuvo un período de fortaleza inusual (2022–2024) impulsado por el diferencial de tasas Banxico–Fed
-          (carry trade) y el auge del nearshoring. El TC llegó a <strong>16.62 MXN/USD en mayo 2023</strong>,
-          mínimo histórico en años.
+        <p style="color:var(--gray-600);line-height:1.85;margin-bottom:1rem">
+          The USD/MXN has experienced high volatility since 2020, ranging from <strong>$17.08</strong> (best 2024)
+          to <strong>$24.83</strong> (COVID peak 2020). The peso is LATAM's most traded currency,
+          with a daily average volume of over <strong>USD 114 billion</strong>.
         </p>
-        <p style="color:var(--gray-600); line-height:1.8; margin-bottom:1.5rem">
-          Sin embargo, factores como la incertidumbre política post-electoral (2024), la desaceleración económica
-          de EE.UU. y la normalización del diferencial de tasas empujaron el tipo de cambio hacia
-          <strong>20.20 a finales de 2024</strong>, representando una depreciación de ~22% en meses.
+        <p style="color:var(--gray-600);line-height:1.85;margin-bottom:1.5rem">
+          Positive real interest rates in Mexico attract foreign capital, supporting the peso.
+          The nearshoring effect has generated structural demand for MXN to pay wages and construction,
+          creating a counterbalancing force against depreciation pressures.
         </p>
-        <div class="warning-panel">
-          <strong><i class="fa fa-exclamation-triangle" style="color:var(--wood)"></i> Relevancia para Arauco:</strong>
-          La volatilidad del MXN impacta directamente los costos de materias primas en dólares
-          (urea, metanol, fenol) que Arauco paga para sus plantas mexicanas. Una depreciación de 10% del MXN
-          puede aumentar el COGS en MXN entre 3.5% y 5.5% dependiendo del mix de producción.
+        <div class="info-panel">
+          <strong>Current levels (2026):</strong> Banxico rate <strong>9.0%</strong> ·
+          Fed Funds <strong>4.50%</strong> · Spread <strong>+450 bps</strong> ·
+          USD/MXN spot <strong>~18.80</strong>
         </div>
       </div>
     </div>
 
     <div class="divider"></div>
 
-    <!-- Rates & inflation -->
     <div class="split-2">
-      <div data-aos="fade-right">
+      <div>
         <div class="section-eyebrow">Monetary Policy</div>
-        <h3 class="font-head" style="font-size:1.5rem; color:var(--forest); margin-bottom:1rem">
-          Diferencial de Tasas: Motor del Carry Trade
+        <h3 class="font-head" style="font-size:1.5rem;color:var(--forest);margin-bottom:1rem">
+          Banxico vs. Fed: The Rate Differential
         </h3>
-        <p style="color:var(--gray-600); line-height:1.8; margin-bottom:1rem">
-          La Interest Rate Parity (PTI) establece que el tipo de cambio forward incorpora el diferencial
-          entre tasas domésticas y extranjeras. Con Banxico en ~8.5% y la Fed en ~4.5%, el diferencial de
-          <strong>~400 puntos base</strong> mantiene al MXN relativamente atractivo para inversores de carry.
+        <p style="color:var(--gray-600);line-height:1.85;margin-bottom:1rem">
+          The gap between Banxico and Fed rates determines capital flows into Mexico.
+          When this differential narrows, investors move funds to the U.S., pressuring the peso to depreciate.
         </p>
-        <div class="table-wrap">
-          <table class="premium-table">
-            <thead><tr><th>Factor</th><th>México</th><th>EE.UU.</th><th>Impact MXN</th></tr></thead>
-            <tbody>
-              <tr><td>Tasa de interés</td><td>8.50%</td><td>4.50%</td><td><span class="badge badge-green">Positive</span></td></tr>
-              <tr><td>Inflación</td><td>3.80%</td><td>2.40%</td><td><span class="badge badge-yellow">Neutral</span></td></tr>
-              <tr><td>Crecimiento PIB 2025E</td><td>2.4%</td><td>2.8%</td><td><span class="badge badge-yellow">Neutral</span></td></tr>
-              <tr><td>Riesgo político</td><td>Medio-alto</td><td>Medio</td><td><span class="badge badge-red">Negative</span></td></tr>
-              <tr><td>Nearshoring</td><td>Auge</td><td>Demandante</td><td><span class="badge badge-green">Positive</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="chart-wrap" >
-        <div class="chart-title"><i class="fa fa-percent" style="color:var(--forest)"></i> Banxico Rates &amp; Mexico Inflation (%)</div>
-        <canvas id="macroMxChart" height="260"></canvas>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Lumber prices & nearshoring -->
-    <div class="split-2">
-      <div class="chart-wrap" >
-        <div class="chart-title"><i class="fa fa-tree" style="color:var(--olive)"></i> Sawn Timber Price Index (USD/MBF)</div>
-        <canvas id="lumberChart" height="250"></canvas>
-        <p style="font-size:.78rem; color:var(--gray-600); margin-top:.75rem">
-          Source: CME Group / Random Length Lumber Futures. Cotiza en USD → exposición directa USD/MXN.
+        <p style="color:var(--gray-600);line-height:1.85;margin-bottom:1.5rem">
+          The IMF projects Mexico GDP growth of <strong>1.2%</strong> for 2026,
+          below the 2024 pace. U.S. inflation is converging toward the 2% target,
+          while Mexico inflation remains at <strong>3.8%</strong> (INPC March 2026).
         </p>
-      </div>
-      <div data-aos="fade-left">
-        <div class="section-eyebrow">Nearshoring</div>
-        <h3 class="font-head" style="font-size:1.5rem; color:var(--forest); margin-bottom:1rem">
-          La gran oportunidad post-pandemia para México
-        </h3>
-        <p style="color:var(--gray-600); line-height:1.8; margin-bottom:1rem">
-          El nearshoring ha atraído más de <strong>US$35,000M en inversión extranjera directa</strong> a México
-          entre 2022-2025 (Secretaría de Economía, 2025). Empresas de semiconductores, automotriz y electrodomésticos
-          construyen o amplían plantas en Monterrey, Guadalajara, Guanajuato y Querétaro.
-        </p>
-        <p style="color:var(--gray-600); line-height:1.8; margin-bottom:1.5rem">
-          Cada fábrica nueva demanda tableros MDF y MDP para oficinas, interiores y muebles industriales.
-          Arauco estima un incremento de demanda de <strong>15-20% adicional</strong> en el segmento industrial
-          gracias a este fenómeno en el período 2024-2028.
-        </p>
-        <div class="cards-grid" style="grid-template-columns:1fr 1fr; gap:1rem">
-          {% for num, label in [('$35Bn+','IED en México 2022–25'),('15-20%','Incremento demanda tableros'),('800K m³','Demanda adicional estimada'),('2027','Zitácuaro a plena capacidad')] %}
-          <div class="stat-card" style="text-align:left; padding:1.25rem">
-            <div class="stat-number" style="font-size:1.6rem">{{ num }}</div>
-            <div class="stat-label" style="text-align:left">{{ label }}</div>
+        <div class="cards-grid" style="grid-template-columns:repeat(2,1fr);gap:1rem">
+          {% for label, val, sub in [
+            ('Banxico Rate','9.00%','Monetary policy reference'),
+            ('Mexico Inflation','3.8%','INPC March 2026'),
+            ('Fed Funds Rate','4.50%','FOMC target range'),
+            ('U.S. Inflation','2.4%','CPI February 2026'),
+          ] %}
+          <div class="stat-card">
+            <div class="stat-number">{{ val }}</div>
+            <div class="stat-label">{{ label }}</div>
+            <div class="stat-delta">{{ sub }}</div>
           </div>
           {% endfor %}
         </div>
       </div>
+
+      <div>
+        <div class="chart-wrap">
+          <div class="chart-title"><i class="fa fa-percent" style="color:var(--forest)"></i> Banxico Rate &amp; Mexico Inflation (%)</div>
+          <canvas id="macroMxChart" height="260"></canvas>
+        </div>
+      </div>
     </div>
 
-    <!-- Scenario panel -->
-    <div style="margin-top:3rem">
-      <div class="section-header">
-        <div class="section-eyebrow" data-aos="fade-up">Macroeconomic Scenarios</div>
-        <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">What Could Happen with USD/MXN?</h2>
+    <div class="divider"></div>
+
+    <div class="split-2">
+      <div>
+        <div class="section-eyebrow">Nearshoring</div>
+        <h3 class="font-head" style="font-size:1.5rem;color:var(--forest);margin-bottom:1rem">
+          The Manufacturing Relocation Boom
+        </h3>
+        <p style="color:var(--gray-600);line-height:1.85;margin-bottom:1rem">
+          Nearshoring has generated an investment boom in Mexico, with companies like
+          <strong>Tesla, TSMC, BMW</strong> and hundreds of automotive suppliers relocating
+          production from Asia to Mexico.
+        </p>
+        <p style="color:var(--gray-600);line-height:1.85;margin-bottom:1.5rem">
+          These plants require MDF and MDP boards for <strong>industrial construction, furniture
+          and interior fit-out</strong>, generating estimated additional demand of
+          <strong>800,000 m³/year</strong> — directly benefiting Arauco as the #1 panel supplier in Mexico.
+        </p>
+        <div class="info-panel">
+          <strong>FDI Mexico 2022–2025:</strong> Over <strong>USD 212 billion</strong> in announced
+          nearshoring investments. Arauco Proyecto Vikingo ($300M) is positioned to capture
+          this structural demand growth. (Secretaría de Economía, 2025)
+        </div>
       </div>
-      <div class="scenario-grid" data-aos="fade-up">
-        <div class="scenario-card scenario-bull">
-          <div class="scenario-label">🟢 Optimistic Scenario</div>
-          <div class="scenario-rate">16.00 – 17.00</div>
-          <p class="scenario-desc">
-            The Fed aggressively cuts rates. Banxico–Fed spread widens. Nearshoring maintains USD flows to Mexico. MXN appreciates.
-            <strong>Para Arauco:</strong> Menor costo de insumos en USD → improved margins in Mexico.
-          </p>
+
+      <div>
+        <div class="chart-wrap">
+          <div class="chart-title"><i class="fa fa-tree" style="color:var(--sage)"></i> Key Input Prices — Urea &amp; Methanol (USD/ton)</div>
+          <canvas id="lumberChart" height="260"></canvas>
+          <p style="font-size:.78rem;color:var(--gray-600);margin-top:.75rem">Source: Trading Economics, CME. Both inputs quoted in USD — FX exposure driver for Arauco Mexico.</p>
         </div>
-        <div class="scenario-card scenario-base">
-          <div class="scenario-label">⚪ Base Scenario</div>
-          <div class="scenario-rate">17.50 – 19.50</div>
-          <p class="scenario-desc">
-            Relative stability with moderate volatility. Banxico maintains positive differential. Local political uncertainty offset by nearshoring.
-            <strong>Para Arauco:</strong> Márgenes estables, gestión de costos activa requerida.
-          </p>
-        </div>
-        <div class="scenario-card scenario-bear">
-          <div class="scenario-label">🔴 Adverse Scenario</div>
-          <div class="scenario-rate">20.00 – 23.00</div>
-          <p class="scenario-desc">
-            Political or economic crisis in Mexico, inflationary rebound in the U.S., emerging market capital outflows. MXN depreciates sharply.
-            <strong>Para Arauco:</strong> Costs de insumos en MXN se disparan, compresión de márgenes significativa.
-          </p>
-        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Macroeconomic Scenarios</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">What Could Happen with USD/MXN?</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">Three forward-looking scenarios for the USD/MXN exchange rate and their impact on Arauco Mexico margins.</p>
+    </div>
+
+    <div class="scenario-grid" data-aos="fade-up">
+      <div class="scenario-card scenario-bull">
+        <div class="scenario-label">🟢 Optimistic Scenario</div>
+        <div class="scenario-rate">16.00 – 17.00</div>
+        <p class="scenario-desc">
+          The Fed aggressively cuts rates. Banxico–Fed spread widens. Nearshoring maintains USD flows to Mexico. MXN appreciates.
+          <strong>For Arauco:</strong> Lower USD input costs → improved operating margins in Mexico.
+        </p>
+      </div>
+      <div class="scenario-card scenario-base">
+        <div class="scenario-label">⚪ Base Scenario</div>
+        <div class="scenario-rate">17.50 – 19.50</div>
+        <p class="scenario-desc">
+          Relative stability with moderate volatility. Banxico maintains positive differential.
+          Local political uncertainty offset by nearshoring flows.
+          <strong>For Arauco:</strong> Stable margins, active cost management required.
+        </p>
+      </div>
+      <div class="scenario-card scenario-bear">
+        <div class="scenario-label">🔴 Adverse Scenario</div>
+        <div class="scenario-rate">20.00 – 23.00</div>
+        <p class="scenario-desc">
+          Political or economic crisis in Mexico, U.S. inflationary rebound, emerging market capital outflows.
+          MXN depreciates sharply.
+          <strong>For Arauco:</strong> MXN input costs spike, significant margin compression.
+        </p>
       </div>
     </div>
 
   </div>
 </section>
-
 {% endblock %}
 
 {% block extra_js %}
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-// USD/MXN historical chart
-const fxCtx = document.getElementById('usdmxnChart');
-if(fxCtx) new Chart(fxCtx, {
-  type:'line',
-  data:{
-    labels:['2020','2021','2022','2023','2024','2025','2026E'],
-    datasets:[{label:'USD/MXN',data:[21.5,20.1,19.8,17.2,17.5,18.8,19.5],
-      borderColor:'#2A3D1F',backgroundColor:'rgba(42,61,31,0.08)',borderWidth:2.5,fill:true,tension:0.4,pointRadius:4}]
-  },
-  options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'},min:15}},animation:{duration:1200}}
-});
-// Macro indicators chart
-const mxCtx = document.getElementById('macroMxChart');
-if(mxCtx) new Chart(mxCtx, {
-  type:'bar',
-  data:{
-    labels:['Inflación MX','Tasa Banxico','Inflación US','Tasa Fed','PIB MX 2026E'],
-    datasets:[{label:'%',data:[3.8,9.0,2.4,4.5,1.2],
-      backgroundColor:['rgba(168,91,58,0.8)','rgba(42,61,31,0.8)','rgba(168,91,58,0.6)','rgba(42,61,31,0.6)','rgba(122,140,94,0.8)'],borderRadius:4}]
-  },
-  options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
-});
-// Lumber price chart
-const lCtx = document.getElementById('lumberChart');
-if(lCtx) new Chart(lCtx, {
-  type:'line',
-  data:{
-    labels:['2020','2021','2022','2023','2024','2025'],
-    datasets:[
-      {label:'Urea (USD/ton)',data:[230,400,780,380,310,340],borderColor:'#A85B3A',borderWidth:2,tension:0.4,pointRadius:3},
-      {label:'Metanol (USD/ton)',data:[190,350,620,280,240,260],borderColor:'#2A3D1F',borderWidth:2,tension:0.4,pointRadius:3}
-    ]
-  },
-  options:{plugins:{legend:{labels:{font:{size:11}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
-});
+  const fxCtx = document.getElementById('usdmxnChart');
+  if(fxCtx) new Chart(fxCtx, {
+    type:'line',
+    data:{
+      labels:['2019','2020','2021','2022','2023','2024','2025','2026E'],
+      datasets:[{label:'USD/MXN',data:[19.2,21.5,20.1,19.8,17.2,17.5,18.8,19.2],
+        borderColor:'#2A3D1F',backgroundColor:'rgba(42,61,31,0.08)',borderWidth:2.5,fill:true,tension:0.4,pointRadius:4,pointBackgroundColor:'#2A3D1F'}]
+    },
+    options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'},min:15,title:{display:true,text:'MXN per USD'}}},animation:{duration:1200}}
+  });
+  const mxCtx = document.getElementById('macroMxChart');
+  if(mxCtx) new Chart(mxCtx, {
+    type:'bar',
+    data:{
+      labels:['2021','2022','2023','2024','2025','2026E'],
+      datasets:[
+        {label:'Banxico Rate (%)',data:[4.0,7.0,11.25,11.0,9.5,9.0],backgroundColor:'rgba(42,61,31,0.8)',borderRadius:4},
+        {label:'Mexico Inflation (%)',data:[7.4,8.7,4.7,4.2,3.9,3.8],backgroundColor:'rgba(122,140,94,0.7)',borderRadius:4}
+      ]
+    },
+    options:{plugins:{legend:{labels:{font:{size:11}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
+  });
+  const lCtx = document.getElementById('lumberChart');
+  if(lCtx) new Chart(lCtx, {
+    type:'line',
+    data:{
+      labels:['2020','2021','2022','2023','2024','2025','2026E'],
+      datasets:[
+        {label:'Urea (USD/ton)',data:[230,400,780,380,310,340,360],borderColor:'#A85B3A',backgroundColor:'rgba(168,91,58,0.08)',borderWidth:2.5,tension:0.4,pointRadius:3,fill:true},
+        {label:'Methanol (USD/ton)',data:[190,350,620,280,240,260,275],borderColor:'#2A3D1F',backgroundColor:'rgba(42,61,31,0.05)',borderWidth:2,tension:0.4,pointRadius:3,fill:true}
+      ]
+    },
+    options:{plugins:{legend:{labels:{font:{size:11}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
+  });
 });
 </script>
 {% endblock %}
