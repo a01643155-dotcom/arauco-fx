@@ -194,3 +194,43 @@
 </section>
 
 {% endblock %}
+
+{% block extra_js %}
+<script>
+// Cost structure donut
+const csCtx = document.getElementById('costStructureChart');
+if(csCtx) new Chart(csCtx, {
+  type:'doughnut',
+  data:{
+    labels:['Raw Materials USD','Labor MXN','Mixed Logistics','MXN Overhead'],
+    datasets:[{data:[55,22,13,10],backgroundColor:['#8B6043','#2A3D1F','#7A8C5E','#B8C9A3'],borderWidth:0,hoverOffset:6}]
+  },
+  options:{plugins:{legend:{display:false}},cutout:'65%',animation:{duration:1200}}
+});
+// FX Scenarios
+const scCtx = document.getElementById('fxScenarioChart');
+if(scCtx) new Chart(scCtx, {
+  type:'line',
+  data:{
+    labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    datasets:[
+      {label:'Optimistic (16.2)',data:[17.2,17.0,16.8,16.6,16.4,16.3,16.2,16.2,16.2,16.2,16.2,16.2],borderColor:'#3D5A2E',borderWidth:2,tension:0.4,borderDash:[5,3]},
+      {label:'Base (18.8)',data:[17.2,17.4,17.6,17.9,18.1,18.3,18.5,18.6,18.7,18.7,18.8,18.8],borderColor:'#7A8C5E',borderWidth:2.5,tension:0.4},
+      {label:'Adverse (22.0)',data:[17.2,17.8,18.4,19.0,19.6,20.2,20.8,21.2,21.5,21.7,21.9,22.0],borderColor:'#A85B3A',borderWidth:2,tension:0.4,borderDash:[5,3]}
+    ]
+  },
+  options:{plugins:{legend:{labels:{font:{size:10}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
+});
+// Sensitivity chart
+const senCtx = document.getElementById('sensitivityChart');
+if(senCtx) new Chart(senCtx, {
+  type:'bar',
+  data:{
+    labels:['16.00','+16.80','17.20 Base','18.00','20.00','22.00'],
+    datasets:[{label:'Δ EBITDA (US$ M)',data:[33,14,0,-23,-67,-110],
+      backgroundColor:['rgba(61,90,46,0.8)','rgba(61,90,46,0.6)','rgba(122,140,94,0.5)','rgba(168,91,58,0.6)','rgba(168,91,58,0.8)','rgba(168,91,58,0.95)'],borderRadius:4}]
+  },
+  options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
+});
+</script>
+{% endblock %}

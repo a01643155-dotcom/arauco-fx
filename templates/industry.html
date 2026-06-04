@@ -159,3 +159,30 @@
 </section>
 
 {% endblock %}
+
+{% block extra_js %}
+<script>
+// Pulp capacity chart
+const pCtx = document.getElementById('pulpCapChart');
+if(pCtx) new Chart(pCtx, {
+  type:'bar',
+  data:{
+    labels:['Suzano','ARAUCO','APRIL/Bracell','UPM-Kymmene','CMPC'],
+    datasets:[{label:'Capacity (kt)',data:[8775,5275,5275,4800,4200],
+      backgroundColor:['rgba(122,140,94,0.7)','rgba(42,61,31,0.9)','rgba(122,140,94,0.7)','rgba(122,140,94,0.7)','rgba(122,140,94,0.7)'],borderRadius:4}]
+  },
+  options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,0,0,0.05)'}},y:{grid:{display:false}}},animation:{duration:1200}}
+});
+// Melamine Mexico chart
+const mCtx = document.getElementById('melamineMxChart');
+if(mCtx) new Chart(mCtx, {
+  type:'line',
+  data:{
+    labels:['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023'],
+    datasets:[{label:'Melamine Mexico (000 m³)',data:[280,320,370,430,500,565,520,620,710,833],
+      borderColor:'#2A3D1F',backgroundColor:'rgba(42,61,31,0.1)',borderWidth:2.5,fill:true,tension:0.4,pointRadius:3}]
+  },
+  options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
+});
+</script>
+{% endblock %}

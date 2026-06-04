@@ -212,3 +212,40 @@
 </section>
 
 {% endblock %}
+
+{% block extra_js %}
+<script>
+// Payoff chart
+const pCtx = document.getElementById('payoffChart');
+if(pCtx) {
+  const spotRates = [15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21];
+  const fwdRate = 17.5, callK = 18.0, callPrem = 0.085;
+  const unhedged = spotRates.map(s => s * 1000000);
+  const hedgedFwd = spotRates.map(() => fwdRate * 1000000);
+  const hedgedCall = spotRates.map(s => (s > callK ? callK + callPrem : s + callPrem) * 1000000);
+  new Chart(pCtx, {
+    type:'line',
+    data:{
+      labels:spotRates,
+      datasets:[
+        {label:'Unhedged',data:unhedged,borderColor:'#A85B3A',borderWidth:2,tension:0,pointRadius:2},
+        {label:'Forward (17.50)',data:hedgedFwd,borderColor:'#2A3D1F',borderWidth:2.5,borderDash:[6,3],pointRadius:0},
+        {label:'Call Option',data:hedgedCall,borderColor:'#7A8C5E',borderWidth:2,tension:0.3,pointRadius:2}
+      ]
+    },
+    options:{plugins:{legend:{labels:{font:{size:10}}}},scales:{x:{title:{display:true,text:'TC MXN/USD'},grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
+  });
+}
+// Hedge cost chart
+const hcCtx = document.getElementById('hedgeCostChart');
+if(hcCtx) new Chart(hcCtx, {
+  type:'bar',
+  data:{
+    labels:['Natural Hedge','OTC Forward','MEXDER Future','OTM Call Option','Currency Swap'],
+    datasets:[{label:'Cost (% of notional)',data:[0,0,0.1,0.85,1.2],
+      backgroundColor:['rgba(61,90,46,0.8)','rgba(61,90,46,0.7)','rgba(122,140,94,0.7)','rgba(168,91,58,0.7)','rgba(168,91,58,0.5)'],borderRadius:4}]
+  },
+  options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,0,0,0.05)'},title:{display:true,text:'% of Notional'}},y:{grid:{display:false}}},animation:{duration:1200}}
+});
+</script>
+{% endblock %}

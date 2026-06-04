@@ -351,3 +351,110 @@ a    { text-decoration:none; color:inherit; }
   .page-hero-inner { padding:2rem 1.25rem 3rem; }
   .page-hero-title { font-size:1.9rem; }
 }
+
+/* ── SCENARIO CARDS ────────────────────────────────────────────── */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.scenario-card {
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  border-left: 4px solid transparent;
+  background: white;
+  border: 1px solid rgba(42,61,31,.08);
+  transition: transform .25s, box-shadow .25s;
+}
+
+.scenario-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(42,61,31,.1);
+}
+
+.scenario-bull  { border-left: 4px solid #3D5A2E; }
+.scenario-base  { border-left: 4px solid #7A8C5E; }
+.scenario-bear  { border-left: 4px solid #A85B3A; }
+
+.scenario-label {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: .6rem;
+}
+
+.scenario-rate {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: .75rem;
+  line-height: 1;
+}
+
+.scenario-desc {
+  font-size: .88rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+}
+
+/* ── TIMELINE ──────────────────────────────────────────────────── */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--green), var(--sage));
+  border-radius: 2px;
+}
+.timeline-item { position: relative; padding-bottom: 2rem; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -2.4rem;
+  top: 4px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--warm-white);
+  box-shadow: 0 0 0 2px var(--green);
+}
+.timeline-year {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: .3rem;
+}
+.timeline-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: .4rem;
+}
+.timeline-text { font-size: .87rem; color: var(--gray-600); line-height: 1.6; }
+
+/* ── BUSINESS MODEL CARDS ──────────────────────────────────────── */
+.biz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.biz-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  border: 1px solid rgba(42,61,31,.07);
+  text-align: center;
+  transition: transform .25s, box-shadow .25s;
+}
+.biz-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(42,61,31,.1); }
+.biz-icon { font-size: 1.5rem; color: var(--forest); margin-bottom: .75rem; }
+.biz-title { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--forest); margin-bottom: .4rem; }
+.biz-text { font-size: .83rem; color: var(--gray-600); line-height: 1.6; }
