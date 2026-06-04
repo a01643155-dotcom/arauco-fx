@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% block title %}FX Exposure Analysis · Arauco{% endblock %}
 {% block content %}
-<body data-page="fx">
-
 <section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('/static/images/Madera.jpg')"></div>
   <div class="page-hero-inner">
     <div class="page-hero-eyebrow"><i class="fa fa-exchange-alt"></i> FX Exposure Analysis</div>
     <h1 class="page-hero-title">FX Exposure<br/>USD / MXN — Arauco Mexico</h1>
@@ -14,26 +13,28 @@
 <section class="section">
   <div class="container">
 
+    <!-- FX banner -->
     <div class="fx-banner" data-aos="fade-up">
-      <h3><i class="fa fa-exclamation-triangle"></i> The Core Exposure: USD Costs, MXN Revenue</h3>
+      <h3><i class="fa fa-exclamation-triangle"></i> La Exposición Central: Costo en USD, Ingreso en MXN</h3>
       <p>
-        Arauco's Mexican plants (Durango, Cuautitlán, Zitácuaro) sell primarily in MXN to the domestic market,
-        but their critical inputs — urea, methanol, phenol, UF resins — are denominated in US dollars.
-        This creates a <strong>short USD operating exposure</strong> (they need to buy dollars to pay for inputs).
-        MXN depreciation directly impacts the gross margin.
+        Las plantas mexicanas de Arauco (Durango, Cuautitlán, Zitácuaro) venden principalmente en MXN al mercado doméstico,
+        pero sus insumos críticos —urea, metanol, fenol, resinas UF— están denominados en dólares americanos.
+        Esto crea una <strong>exposición operativa corta en USD</strong> (necesitan comprar dólares para pagar insumos).
+        Una depreciación del MXN impacta directamente el margen bruto.
       </p>
     </div>
 
+    <!-- Cost structure + Scenario forecast -->
     <div class="split-2">
       <div class="chart-wrap" data-aos="fade-right">
-        <div class="chart-title"><i class="fa fa-chart-pie" style="color:var(--wood)"></i> Cost Structure — Mexico MDF Plants</div>
+        <div class="chart-title"><i class="fa fa-chart-pie" style="color:var(--wood)"></i> Estructura de Costos — Plantas MDF México</div>
         <canvas id="costStructureChart" height="260"></canvas>
         <div class="donut-legend mt-2">
           {% for label, pct, color in [
-            ('Raw Materials in USD','55%','#8B5E3C'),
-            ('Labor in MXN','22%','#2D5A1B'),
-            ('Mixed Logistics','13%','#8FAF5A'),
-            ('MXN Overhead','10%','#6B8E23')
+            ('Materias Primas en USD','55%','#8B5E3C'),
+            ('Mano de Obra MXN','22%','#2D5A1B'),
+            ('Logística Mixta','13%','#8FAF5A'),
+            ('Overhead MXN','10%','#6B8E23')
           ] %}
           <div class="legend-item">
             <div class="legend-dot" style="background:{{ color }}"></div>
@@ -43,40 +44,41 @@
           {% endfor %}
         </div>
         <p style="font-size:.78rem; color:var(--gray-600); margin-top:.75rem">
-          Own estimate based on Arauco data (2025) and MDF industry cost structure.
+          Estimación propia basada en datos de Arauco (2025) y estructura de costos MDF industria.
           RISI/Fisher International, 2024.
         </p>
       </div>
 
       <div class="chart-wrap" data-aos="fade-left">
-        <div class="chart-title"><i class="fa fa-chart-line" style="color:var(--forest)"></i> USD/MXN Forecast — Three Scenarios 2026</div>
+        <div class="chart-title"><i class="fa fa-chart-line" style="color:var(--forest)"></i> Pronóstico USD/MXN — Tres Escenarios 2026</div>
         <canvas id="fxScenarioChart" height="260"></canvas>
         <div style="display:flex; gap:.75rem; flex-wrap:wrap; margin-top:.75rem">
-          <span class="badge badge-green">Optimistic: TC ↓ 16.2</span>
+          <span class="badge badge-green">Optimista: TC ↓ 16.2</span>
           <span class="badge badge-blue">Base: TC ~18.8</span>
-          <span class="badge badge-red">Adverse: TC ↑ 22.0</span>
+          <span class="badge badge-red">Adverso: TC ↑ 22.0</span>
         </div>
       </div>
     </div>
 
     <div class="divider"></div>
 
+    <!-- Types of exposure -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Types of Exposure</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Three Dimensions of FX Risk</h2>
+      <div class="section-eyebrow" data-aos="fade-up">Tipos de Exposición</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Tres Dimensiones del Riesgo FX</h2>
     </div>
 
     <div class="cards-grid">
       {% for icon, tipo, title, text, example in [
-        ('fa-file-invoice-dollar','Transaction Exposure','Foreign Currency Contracts',
-         'Future USD payments for already-committed raw materials (urea, methanol). The risk exists from contract signing to payment. It is the most direct and measurable exposure.',
-         'Example: Arauco signs in May a urea contract at US$655/ton for August delivery. If MXN depreciates from 17 to 20, the MXN cost rises from $11,135 to $13,100 per ton.'),
-        ('fa-calculator','Economic Exposure','Present Value of Future Cash Flows',
-         'Long-term impact on company value. If the MXN permanently depreciates, Arauco\'s competitive position in Mexico changes vs. importers. Affects the value of future projects (e.g., Zitácuaro).',
-         'Example: Project Vikingo ($300M USD) will generate MXN cash flows. A structural depreciation reduces the project\'s NPV in USD terms.'),
-        ('fa-book','Translation Exposure','Accounting Consolidation',
-         'Arauco consolidates financial statements in USD. Its MXN assets and liabilities must be converted. MXN depreciation reduces the USD value of its Mexican assets on the consolidated balance sheet.',
-         'Example: Durango plant valued at MXN$1,500M. At TC 17 it is worth US$88.2M; at TC 21 only US$71.4M — an accounting loss of US$16.8M with no physical change.')
+        ('fa-file-invoice-dollar','Exposición de Transacción','Contratos en Moneda Extranjera',
+         'Pagos futuros en USD por materias primas ya comprometidas (urea, metanol). El riesgo existe desde que se firma el contrato hasta el pago. Es la exposición más directa y medible.',
+         'Ejemplo: Arauco firma en mayo contrato de urea a US$655/ton para entrega en agosto. Si el MXN se deprecia de 17 a 20, el costo en MXN sube de $11,135 a $13,100 por ton.'),
+        ('fa-calculator','Exposición Económica','Valor Presente de Flujos Futuros',
+         'Impacto a largo plazo sobre el valor de la empresa. Si el MXN se deprecia permanentemente, la posición competitiva de Arauco en México cambia vs. importadores. Afecta el valor de los proyectos futuros (ej. Zitácuaro).',
+         'Ejemplo: El proyecto Vikingo de $300 MDD generará flujos en MXN. Una depreciación estructural reduce el VPN del proyecto en términos de USD.'),
+        ('fa-book','Exposición de Traslación','Consolidación Contable',
+         'Arauco consolida estados financieros en USD. Sus activos y pasivos en MXN se deben convertir. Una depreciación del MXN reduce el valor en USD de sus activos mexicanos en el balance consolidado.',
+         'Ejemplo: La planta de Durango valuada en $1,500 MXM. A TC 17 vale US$88.2M; a TC 21 vale solo US$71.4M — pérdida contable de US$16.8M sin mover nada físico.')
       ] %}
       <div class="card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
         <div class="card-icon"><i class="fa {{ icon }}"></i></div>
@@ -92,33 +94,34 @@
 
     <div class="divider"></div>
 
+    <!-- Sensitivity analysis -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Sensitivity Analysis</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">EBITDA Impact in Mexico by Exchange Rate Variation</h2>
+      <div class="section-eyebrow" data-aos="fade-up">Análisis de Sensibilidad</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Impacto en EBITDA México por Variación Cambiaria</h2>
       <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
-        Based on estimated Mexico operations EBITDA of ~US$120M annually and net USD input exposure of ~55% of COGS.
+        Basado en EBITDA estimado de operaciones México ~US$120M anuales y exposición neta en insumos USD de ~55% del COGS.
       </p>
     </div>
 
     <div class="split-2">
       <div class="chart-wrap" data-aos="fade-right">
-        <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--forest)"></i> EBITDA Impact by Exchange Rate Change (US$ M)</div>
+        <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--forest)"></i> Impacto en EBITDA por Cambio en TC (US$ M)</div>
         <canvas id="sensitivityChart" height="260"></canvas>
       </div>
       <div data-aos="fade-left">
         <div class="table-wrap">
           <table class="premium-table">
             <thead>
-              <tr><th>FX Scenario</th><th>MXN Change</th><th>Δ Input Cost (MXN M)</th><th>Δ EBITDA (US$ M)</th><th>Impact</th></tr>
+              <tr><th>Escenario TC</th><th>Variación MXN</th><th>Δ Costo Insumos (MXN M)</th><th>Δ EBITDA (US$ M)</th><th>Impacto</th></tr>
             </thead>
             <tbody>
               {% for tc, var, delta_mxn, delta_usd, badge, b_class in [
-                ('16.00','−7.0% (appreciates)','−$560M','+$33M','Positive','badge-green'),
-                ('16.80','−3.0%','−$240M','+$14M','Moderate+','badge-green'),
+                ('16.00','−7.0% (aprecia)','−$560M','+$33M','Positivo','badge-green'),
+                ('16.80','−3.0%','−$240M','+$14M','Moderado+','badge-green'),
                 ('17.20 (base)','0%','—','—','Base','badge-blue'),
-                ('18.00','+5.0%','$420M','−$23M','Negative','badge-yellow'),
-                ('20.00','+16.2%','$1,360M','−$67M','Severe','badge-red'),
-                ('22.00','+28.0%','$2,240M','−$110M','Critical','badge-red'),
+                ('18.00','+5.0%','$420M','−$23M','Negativo','badge-yellow'),
+                ('20.00','+16.2%','$1,360M','−$67M','Severo','badge-red'),
+                ('22.00','+28.0%','$2,240M','−$110M','Crítico','badge-red'),
               ] %}
               <tr>
                 <td><strong>{{ tc }}</strong></td>
@@ -132,34 +135,35 @@
           </table>
         </div>
         <div class="info-panel mt-3">
-          <strong>Model assumptions:</strong> Mexico revenues ~US$350M/year,
-          55% of COGS in USD (~US$120M), base EBITDA margin 34%.
-          Cost variation calculated with unit elasticity to the exchange rate.
-          Source: Arauco (2025); own estimates.
+          <strong>Supuestos del modelo:</strong> Ingresos México ~US$350M/año,
+          55% del COGS en USD (~US$120M), margen EBITDA base 34%.
+          Variación de costo calculada con elasticidad unitaria al tipo de cambio.
+          Fuente: Arauco (2025); estimaciones propias.
         </div>
       </div>
     </div>
 
     <div class="divider"></div>
 
+    <!-- Raw materials exposure -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Critical Raw Materials</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">USD Inputs That Drive MXN Costs</h2>
+      <div class="section-eyebrow" data-aos="fade-up">Materias Primas Críticas</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Insumos en USD que Definen el Costo MXN</h2>
     </div>
 
     <div class="table-wrap" data-aos="fade-up">
       <table class="premium-table">
         <thead>
-          <tr><th>Input</th><th>Ref. Price 2026 (USD/ton)</th><th>% of Resin Cost</th><th>Pricing</th><th>FX Risk</th><th>Trend</th></tr>
+          <tr><th>Insumo</th><th>Precio Ref. 2026 (USD/ton)</th><th>% en Costo Resina</th><th>Cotización</th><th>Riesgo FX</th><th>Tendencia</th></tr>
         </thead>
         <tbody>
           {% for item, precio, pct, cotiz, riesgo, b_class, tend in [
-            ('Urea','$655 – $975','45–55%','Global (CFR)','High','badge-red','↑ Volatile'),
-            ('Formaldehyde','$380 – $520','25–30%','Regional USD','High','badge-red','→ Stable'),
-            ('Methanol','$1,200 – $1,500','8–12%','CME USD/ton','Very High','badge-red','↑ Bullish'),
-            ('Phenol','$1,600 – $1,900','Plywood/OSB','Petrochemical USD','High','badge-red','→ Moderate'),
-            ('Roundwood','MXN/m³','Base','Local MXN','Low','badge-green','→ Stable'),
-            ('Electricity','MXN/MWh','Overhead','CFE MXN','Low','badge-green','↑ Moderate'),
+            ('Urea','$655 – $975','45–55%','Global (CFR)','Alto','badge-red','↑ Volátil'),
+            ('Formaldehído','$380 – $520','25–30%','Regional USD','Alto','badge-red','→ Estable'),
+            ('Metanol','$1,200 – $1,500','8–12%','CME USD/ton','Muy Alto','badge-red','↑ Alcista'),
+            ('Fenol','$1,600 – $1,900','Plywood/OSB','Petroquímico USD','Alto','badge-red','→ Moderado'),
+            ('Madera en rollo','MXN/m³','Base','Local MXN','Bajo','badge-green','→ Estable'),
+            ('Energía eléctrica','MXN/MWh','Overhead','CFE MXN','Bajo','badge-green','↑ Moderado'),
           ] %}
           <tr>
             <td><strong>{{ item }}</strong></td>
@@ -175,19 +179,18 @@
     </div>
 
     <div class="highlight-block mt-4" style="margin-top:2rem" data-aos="fade-up">
-      <h3>📌 Conclusion: Net Operating Exposure</h3>
+      <h3>📌 Conclusión: Exposición Operativa Neta</h3>
       <p>
-        Arauco Mexico has an <strong>estimated short USD operating exposure of US$120–150M annually</strong>
-        (USD component of COGS at Mexican plants). This means that for every
-        10 cents of peso depreciation (e.g., from $17 to $17.10/USD), Arauco incurs
-        ~US$800K–1M in additional annual operating cost, ceteris paribus.
-        Translation exposure additionally amounts to the USD value of fixed assets
-        in Mexico (~US$600–800M at book value estimates).
+        Arauco México tiene una <strong>exposición operativa corta en USD estimada en US$120–150M anuales</strong>
+        (valor del componente USD en el COGS de las plantas mexicanas). Esto significa que por cada
+        10 centavos de depreciación del peso (ej: de $17 a $17.10/USD), Arauco incurre en
+        ~US$800K–1M adicionales en costo operativo por año, ceteris paribus.
+        La exposición de traslación asciende adicionalmente al valor en USD de los activos fijos
+        en México (~US$600–800M según estimaciones de valor libro).
       </p>
     </div>
 
   </div>
 </section>
 
-<script>document.body.dataset.page = 'fx';</script>
 {% endblock %}

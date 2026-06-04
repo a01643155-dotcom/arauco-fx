@@ -1,85 +1,145 @@
 {% extends "base.html" %}
 {% block title %}Arauco · FX Risk Analysis · AFI Tec Monterrey{% endblock %}
-
 {% block content %}
-<body data-page="home">
 
-<!-- ═══════════ HERO ═══════════ -->
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-inner">
-
     <div class="hero-eyebrow" data-aos="fade-up">
-      <i class="fa fa-leaf"></i> International Financial Management · Tec de Monterrey
+      International Financial Management · Tec de Monterrey
     </div>
-
     <h1 class="hero-title" data-aos="fade-up" data-aos-delay="80">
-      Arauco: Currency Risk<br/>
-      <span>in Global Markets</span>
+      Arauco:<br/><span>Currency Risk</span><br/>in Global Markets
     </h1>
-
     <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="160">
       Strategic analysis of the USD/MXN exposure of the world's third-largest forestry company.
-      From nature and renewables, we contribute to people and the planet.
+      From nature, we contribute to people and the planet.
     </p>
-
     <div class="hero-cta-group" data-aos="fade-up" data-aos-delay="240">
-      <a href="/company" class="btn-primary">
-        <i class="fa fa-chart-bar"></i> View Full Analysis
-      </a>
-      <a href="/fx-exposure" class="btn-ghost">
-        <i class="fa fa-exchange-alt"></i> FX Exposure
-      </a>
+      <a href="/company" class="btn-primary"><i class="fa fa-chart-bar"></i> View Analysis</a>
+      <a href="/fx-exposure" class="btn-ghost"><i class="fa fa-exchange-alt"></i> FX Exposure</a>
     </div>
-
-    <div class="hero-metrics" data-aos="fade-up" data-aos-delay="360">
+    <div class="hero-metrics" data-aos="fade-up" data-aos-delay="340">
       <div class="metric-item">
-        <div class="metric-value">
-          <span data-count="6084" data-prefix="$" data-suffix="M">$0M</span>
-        </div>
-        <div class="metric-label">Revenue USD (2025 LTM)</div>
+        <div class="metric-value"><span data-count="6084" data-prefix="$" data-suffix="M">$0M</span></div>
+        <div class="metric-label">Revenue USD · LTM 2025</div>
       </div>
       <div class="metric-item">
-        <div class="metric-value">
-          <span data-count="21.9" data-suffix="%" data-decimals="1">0%</span>
-        </div>
+        <div class="metric-value"><span data-count="21.9" data-suffix="%" data-decimals="1">0%</span></div>
         <div class="metric-label">EBITDA Margin</div>
       </div>
       <div class="metric-item">
-        <div class="metric-value">
-          <span data-count="3" data-prefix="#">#0</span>
-        </div>
+        <div class="metric-value"><span data-count="3" data-prefix="#">#0</span></div>
         <div class="metric-label">Global Pulp Capacity</div>
       </div>
       <div class="metric-item">
-        <div class="metric-value">
-          <span data-count="1" data-prefix="#">#0</span>
+        <div class="metric-value"><span data-count="1" data-prefix="#">#0</span></div>
+        <div class="metric-label">Panel Boards · Mexico</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BENTO GRID ════════════════════════════════════════════════ -->
+<div class="bento-section">
+  <div class="bento-grid">
+
+    <!-- Large forest image -->
+    <div class="bento-cell b-8 b-h-lg" data-aos="fade-right">
+      <img src="/static/images/Bosque2.jpg" alt="Forest" class="bento-img"/>
+      <div class="bento-overlay">
+        <div class="bento-label-light">Global Operations</div>
+        <div class="bento-title-white" style="font-size:2.2rem">11 Countries.<br/>One Vision.</div>
+        <div style="font-size:.85rem; color:rgba(245,237,216,.65); margin-top:.6rem">Chile · Mexico · Brazil · USA · Canada · Europe</div>
+      </div>
+    </div>
+
+    <!-- Stat: Revenue -->
+    <div class="bento-cell b-4 bento-text b-h-lg" data-aos="fade-left">
+      <div class="bento-label">Total Revenue</div>
+      <div class="bento-stat">$6,084<span style="font-size:1.4rem;color:var(--sage)">M</span></div>
+      <div class="bento-body">USD · LTM December 2025. Split 50% pulp / 50% wood & panels.</div>
+      <div style="margin-top:1.5rem">
+        <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sage);margin-bottom:.5rem">Credit Ratings</div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <span class="badge badge-green">Fitch BBB</span>
+          <span class="badge badge-blue">S&P BBB-</span>
+          <span class="badge badge-yellow">Moody's Baa3</span>
         </div>
-        <div class="metric-label">Panel Boards in Mexico</div>
+      </div>
+    </div>
+
+    <!-- Logs image -->
+    <div class="bento-cell b-4 b-h-md" data-aos="fade-up">
+      <img src="/static/images/Troncos.jpg" alt="Logs" class="bento-img"/>
+      <div class="bento-overlay">
+        <div class="bento-label-light">Pulp Capacity</div>
+        <div class="bento-title-white">#3 Global<br/>5,275 kt/year</div>
+      </div>
+    </div>
+
+    <!-- Mexico stat -->
+    <div class="bento-cell b-4 bento-text-dark b-h-md" data-aos="fade-up" data-aos-delay="60">
+      <div class="bento-label-cream">Mexico Market</div>
+      <div class="bento-stat-light">#1</div>
+      <div style="font-family:var(--font-serif);font-size:1.1rem;color:var(--light-sage);margin-top:.25rem">Panel Board<br/>Manufacturer</div>
+      <div class="bento-body-light" style="margin-top:.75rem">MDF · MDP/PBO · Melamine<br/>Durango · Zitácuaro · Cuautitlán</div>
+    </div>
+
+    <!-- Industry image -->
+    <div class="bento-cell b-4 b-h-md" data-aos="fade-up" data-aos-delay="120">
+      <img src="/static/images/Industria.jpg" alt="Industry" class="bento-img"/>
+      <div class="bento-overlay">
+        <div class="bento-label-light">Vertical Integration</div>
+        <div class="bento-title-white">Forest to<br/>Final Product</div>
+      </div>
+    </div>
+
+    <!-- Carpenter image -->
+    <div class="bento-cell b-5 b-h-md" data-aos="fade-right">
+      <img src="/static/images/Carpintero.jpg" alt="Craft" class="bento-img"/>
+      <div class="bento-overlay">
+        <div class="bento-label-light">FX Exposure</div>
+        <div class="bento-title-white">USD Costs,<br/>MXN Revenue</div>
+      </div>
+    </div>
+
+    <!-- FX exposure stat -->
+    <div class="bento-cell b-4 bento-text b-h-md" data-aos="fade-up">
+      <div class="bento-label">Net USD Exposure</div>
+      <div class="bento-stat" style="color:var(--terracotta)">~$135<span style="font-size:1.2rem;color:var(--gray-400)">M</span></div>
+      <div class="bento-body">Annual short USD operating exposure in Mexican plants. Every 10¢ peso depreciation = ~$1M additional cost.</div>
+    </div>
+
+    <!-- Planta image -->
+    <div class="bento-cell b-3 b-h-md" data-aos="fade-left">
+      <img src="/static/images/Planta.jpg" alt="Sustainability" class="bento-img"/>
+      <div class="bento-overlay">
+        <div class="bento-label-light">Sustainability</div>
+        <div class="bento-title-white">Carbon<br/>Neutral</div>
       </div>
     </div>
 
   </div>
-</section>
+</div>
 
-<!-- ═══════════ EXECUTIVE SUMMARY ═══════════ -->
+<!-- ══ EXECUTIVE SUMMARY ═════════════════════════════════════════ -->
 <section class="section">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow" data-aos="fade-up">Executive Summary</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">
-        Why does currency risk matter for Arauco?
-      </h2>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Why does currency risk matter for Arauco?</h2>
       <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
         Arauco operates in 11 countries with revenues in USD, EUR and multiple local currencies,
         while its Mexico costs are denominated in MXN. This mismatch is at the core of its FX exposure.
       </p>
     </div>
-
     <div class="cards-grid">
-      <div class="card" data-aos="fade-up" data-aos-delay="0">
+      <div class="card" data-aos="fade-up">
         <div class="card-icon"><i class="fa fa-globe-americas"></i></div>
         <h3 class="card-title">Global Presence</h3>
-        <p class="card-text">Operations in Chile, Brazil, Uruguay, Argentina, Peru, Colombia, USA, Canada, Mexico and Europe. 37% of revenues come from North America.</p>
+        <p class="card-text">Operations in Chile, Brazil, Uruguay, Argentina, Peru, Colombia, USA, Canada, Mexico and Europe. 37% of revenues from North America.</p>
         <div class="tags"><span class="tag">11 countries</span><span class="tag">USD / EUR / MXN</span></div>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="80">
@@ -97,28 +157,23 @@
       <div class="card" data-aos="fade-up" data-aos-delay="240">
         <div class="card-icon"><i class="fa fa-shield-alt"></i></div>
         <h3 class="card-title">Hedging Strategy</h3>
-        <p class="card-text">Arauco manages its exposure primarily through natural hedging and local currency financing. No financial derivatives currently used in Mexico.</p>
+        <p class="card-text">Arauco manages its exposure through natural hedging and local currency financing. No financial derivatives currently used in Mexico.</p>
         <div class="tags"><span class="tag">Natural Hedge</span><span class="tag">No active derivatives</span></div>
       </div>
     </div>
 
-    <!-- Revenue split -->
-    <div class="split-2 mt-4" style="margin-top:3rem">
+    <!-- Revenue split editorial -->
+    <div class="split-2" style="margin-top:4rem; align-items:center;">
       <div data-aos="fade-right">
         <div class="section-eyebrow">Revenue Structure</div>
-        <h3 class="font-head" style="font-size:1.8rem; color:var(--forest); margin-bottom:1rem;">
-          50% Pulp · 50% Wood & Panels
-        </h3>
-        <p style="color:var(--gray-600); line-height:1.8; margin-bottom:1.5rem;">
-          The perfect split between cellulose and wood products gives Arauco
-          natural diversification that cushions sectoral cycles.
-          Revenues of <strong>US$6,084M</strong> (LTM Dec 2025) reflect its position
-          as the world's third-largest pulp producer (5,275 kt capacity).
+        <h3 class="font-head" style="font-size:2.2rem;color:var(--forest);margin-bottom:1rem;line-height:1.15">50% Pulp<br/>50% Wood & Panels</h3>
+        <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1.5rem;font-size:.95rem">
+          The perfect split between cellulose and wood products gives Arauco natural diversification
+          that cushions sectoral cycles. Revenues of <strong>US$6,084M</strong> (LTM Dec 2025).
         </p>
         <div class="info-panel">
           <strong><i class="fa fa-info-circle"></i> Credit ratings:</strong>
-          Fitch <strong>BBB</strong> · S&P <strong>BBB-</strong> · Moody's <strong>Baa3</strong> —
-          investment grade, stable outlook.
+          Fitch <strong>BBB</strong> · S&P <strong>BBB-</strong> · Moody's <strong>Baa3</strong> — investment grade, stable outlook.
         </div>
       </div>
       <div data-aos="fade-left">
@@ -126,47 +181,34 @@
           <div class="chart-title"><i class="fa fa-chart-pie" style="color:var(--green)"></i> Revenue by Segment</div>
           <canvas id="segmentChart" height="260"></canvas>
           <div class="donut-legend mt-2">
-            <div class="legend-item">
-              <div class="legend-dot" style="background:#2D5A1B"></div>
-              <span class="legend-label">Pulp (Cellulose)</span>
-              <span class="legend-value">50% · US$3,042M</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot" style="background:#8B5E3C"></div>
-              <span class="legend-label">Wood & Panels</span>
-              <span class="legend-value">50% · US$3,042M</span>
-            </div>
+            <div class="legend-item"><div class="legend-dot" style="background:#2A3D1F"></div><span class="legend-label">Pulp (Cellulose)</span><span class="legend-value">50% · US$3,042M</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background:#8B6043"></div><span class="legend-label">Wood & Panels</span><span class="legend-value">50% · US$3,042M</span></div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════ NAVIGATION CARDS ═══════════ -->
+<!-- ══ EXPLORE ═══════════════════════════════════════════════════ -->
 <section class="section section-dark">
   <div class="container">
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Explore the analysis</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">
-        Comprehensive FX Risk Analysis
-      </h2>
+      <div class="section-eyebrow" data-aos="fade-up">Explore the Analysis</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Comprehensive FX Risk Analysis</h2>
     </div>
     <div class="cards-grid">
       {% set nav_items = [
-        ('/company',    'fa-building',       'Company Analysis',      'Business model, international operations, supply chain and revenue sources of Arauco.'),
-        ('/industry',   'fa-tree',           'Industry & Competitors', 'LATAM competitors, strategic benchmarks and sectoral FX impact.'),
-        ('/macro',      'fa-chart-line',     'Macroeconomic Factors',  'Inflation, interest rates, nearshoring and economic cycles affecting operations.'),
-        ('/fx-exposure','fa-exchange-alt',   'FX Exposure Analysis',   'Quantification of USD/MXN exposure, sensitivity analysis and hypothetical scenarios.'),
-        ('/hedging',    'fa-shield-alt',     'Hedging Strategy',       'Forwards, futures, swaps and natural hedging: the best option for Arauco.'),
-        ('/references', 'fa-book-open',      'References',             'Complete academic bibliography in APA format with primary and secondary sources.')
+        ('/company',    'fa-building',     'Company Analysis',     'Business model, international operations, supply chain and revenue sources of Arauco.'),
+        ('/industry',   'fa-tree',         'Industry & Competitors','LATAM competitors, strategic benchmarks and sectoral FX impact.'),
+        ('/macro',      'fa-chart-line',   'Macroeconomic Factors', 'Inflation, interest rates, nearshoring and economic cycles affecting operations.'),
+        ('/fx-exposure','fa-exchange-alt', 'FX Exposure Analysis',  'Quantification of USD/MXN exposure, sensitivity analysis and hypothetical scenarios.'),
+        ('/hedging',    'fa-shield-alt',   'Hedging Strategy',      'Forwards, futures, swaps and natural hedging: the best option for Arauco.'),
+        ('/references', 'fa-book-open',    'References',            'Complete academic bibliography in APA format with primary and secondary sources.')
       ] %}
-      {% for url, icon, title, text in nav_items %}
+      {% for url,icon,title,text in nav_items %}
       <a href="{{ url }}" class="card-dark" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 60 }}" style="display:block">
-        <div class="card-icon" style="background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.1)">
-          <i class="fa {{ icon }}" style="color:var(--sage)"></i>
-        </div>
+        <div class="card-icon"><i class="fa {{ icon }}" style="color:var(--light-sage)"></i></div>
         <h3 class="card-title">{{ title }}</h3>
         <p class="card-text">{{ text }}</p>
       </a>
@@ -175,17 +217,15 @@
   </div>
 </section>
 
-<!-- ═══════════ KEY STATS ═══════════ -->
+<!-- ══ KEY STATS ═════════════════════════════════════════════════ -->
 <section class="section section-alt">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow" data-aos="fade-up">Key Figures</div>
       <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Arauco by the Numbers</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
-        Source: Arauco Annual Report / Corporate Presentation, December 2025 LTM
-      </p>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">Source: Arauco Annual Report / Corporate Presentation, December 2025 LTM</p>
     </div>
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(170px,1fr)); gap:1.25rem;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.25rem">
       {% set stats = [
         ('$6,084M','USD','Total Revenue','LTM Dec 2025'),
         ('$1,331M','USD','Adjusted EBITDA','21.9% Margin'),
@@ -196,7 +236,7 @@
         ('30%','—','MDF Market Share','Mexico'),
         ('40%','—','PBO Market Share','Mexico'),
       ] %}
-      {% for val, unit, label, sub in stats %}
+      {% for val,unit,label,sub in stats %}
       <div class="stat-card" data-aos="zoom-in" data-aos-delay="{{ loop.index0 * 50 }}">
         <div class="stat-number">{{ val }}<span class="stat-unit"> {{ unit }}</span></div>
         <div class="stat-label">{{ label }}</div>
@@ -207,29 +247,31 @@
   </div>
 </section>
 
-<!-- ═══════════ TEAM ═══════════ -->
+<!-- ══ TEAM ══════════════════════════════════════════════════════ -->
 <section class="section">
   <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Meet the Team</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">The People Behind This Analysis</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
+    <div class="section-header" style="text-align:center">
+      <div class="section-eyebrow" data-aos="fade-up" style="justify-content:center">Meet the Team</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60" style="text-align:center">The People Behind This Analysis</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120" style="margin:0 auto;text-align:center">
         Students of International Financial Management · Tecnológico de Monterrey, Campus Guadalajara · 2026
       </p>
     </div>
-
     <div class="team-grid">
       {% set members = [
-('Issabela Rosales Hawa',       'IR', 'A01642432'),
-('María Fernanda Pérez Santes', 'MF', 'A01643155'),
-('Roxana Cruz Hernández',       'RC', 'A01540660'),
-('Daniela Hernández Martínez',  'DH', 'A01613967'),
-('Martín Espejo',               'ME', 'A01642331'),
+        ('Issabela Rosales Hawa',       'IR','A01642432'),
+        ('María Fernanda Pérez Santes', 'MF','A01643155'),
+        ('Roxana Cruz Hernández',       'RC','A01540660'),
+        ('Daniela Hernández Martínez',  'DH','A01613967'),
+        ('Martín Espejo',               'ME','A01642331'),
       ] %}
-      {% for name, initials, matricula in members %}
+      {% for name,initials,matricula in members %}
       <div class="team-card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
         <div class="team-avatar">
-          <img src="{{ url_for('static', filename='images/' + initials|lower + '.jpg') }}" alt="{{ name }}">
+          <img src="{{ url_for('static', filename='images/' + initials|lower + '.jpg') }}"
+               alt="{{ name }}"
+               onerror="this.style.display='none';this.parentNode.querySelector('.team-initials').style.display='flex'"/>
+          <span class="team-initials" style="display:none">{{ initials }}</span>
         </div>
         <div class="team-name">{{ name }}</div>
         <div class="team-role">{{ matricula }}</div>
@@ -239,61 +281,17 @@
   </div>
 </section>
 
-<style>
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
-  margin-top: 1rem;
-}
-.team-card {
-  text-align: center;
-  padding: 2rem 1rem 1.5rem;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-  transition: transform 0.25s, box-shadow 0.25s;
-  border-top: 4px solid var(--green);
-}
-.team-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-}
-.team-avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--forest) 0%, var(--green) 100%);
-  margin: 0 auto 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.team-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.team-initials {
-  color: white;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-.team-name {
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--forest);
-  margin-bottom: 0.3rem;
-}
-.team-role {
-  font-size: 0.82rem;
-  color: var(--gray-600);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-</style>
-
-<script>document.body.dataset.page = 'home';</script>
+{% block extra_js %}
+<script>
+const ctx = document.getElementById('segmentChart');
+if(ctx) new Chart(ctx, {
+  type:'doughnut',
+  data:{
+    labels:['Pulp (Cellulose)','Wood & Panels'],
+    datasets:[{data:[50,50],backgroundColor:['#2A3D1F','#8B6043'],borderWidth:0,hoverOffset:6}]
+  },
+  options:{plugins:{legend:{display:false}},cutout:'68%',animation:{duration:1200}}
+});
+</script>
+{% endblock %}
 {% endblock %}
