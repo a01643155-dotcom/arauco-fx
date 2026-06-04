@@ -15,7 +15,7 @@
 
     <!-- FX banner -->
     <div class="fx-banner" data-aos="fade-up">
-      <h3><i class="fa fa-exclamation-triangle"></i> La Exposición Central: Costo en USD, Ingreso en MXN</h3>
+      <h3><i class="fa fa-exclamation-triangle"></i> La Exposición Central: Cost en USD, Ingreso en MXN</h3>
       <p>
         Las plantas mexicanas de Arauco (Durango, Cuautitlán, Zitácuaro) venden principalmente en MXN al mercado doméstico,
         pero sus insumos críticos —urea, metanol, fenol, resinas UF— están denominados en dólares americanos.
@@ -27,7 +27,7 @@
     <!-- Cost structure + Scenario forecast -->
     <div class="split-2">
       <div class="chart-wrap" >
-        <div class="chart-title"><i class="fa fa-chart-pie" style="color:var(--wood)"></i> Estructura de Costos — Plantas MDF México</div>
+        <div class="chart-title"><i class="fa fa-chart-pie" style="color:var(--wood)"></i> Estructura de Costs — Plantas MDF México</div>
         <canvas id="costStructureChart" height="260"></canvas>
         <div class="donut-legend mt-2">
           {% for label, pct, color in [
@@ -44,7 +44,7 @@
           {% endfor %}
         </div>
         <p style="font-size:.78rem; color:var(--gray-600); margin-top:.75rem">
-          Estimación propia basada en datos de Arauco (2025) y estructura de costos MDF industria.
+          Own estimate basada en datos de Arauco (2025) y estructura de costos MDF industria.
           RISI/Fisher International, 2024.
         </p>
       </div>
@@ -64,20 +64,20 @@
 
     <!-- Types of exposure -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Tipos de Exposición</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Tres Dimensiones del Riesgo FX</h2>
+      <div class="section-eyebrow" data-aos="fade-up">Types of Exposure</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Tres Dimensiones del FX Risk</h2>
     </div>
 
     <div class="cards-grid">
       {% for icon, tipo, title, text, example in [
-        ('fa-file-invoice-dollar','Exposición de Transacción','Contratos en Moneda Extranjera',
-         'Pagos futuros en USD por materias primas ya comprometidas (urea, metanol). El riesgo existe desde que se firma el contrato hasta el pago. Es la exposición más directa y medible.',
+        ('fa-file-invoice-dollar','Exposición de Transacción','Foreign Currency Contracts',
+         'Future USD payments for already-committed raw materials (urea, metanol). El riesgo existe desde que se firma el contrato hasta el pago. It is the most direct and measurable exposure.',
          'Ejemplo: Arauco firma en mayo contrato de urea a US$655/ton para entrega en agosto. Si el MXN se deprecia de 17 a 20, el costo en MXN sube de $11,135 a $13,100 por ton.'),
-        ('fa-calculator','Exposición Económica','Valor Presente de Flujos Futuros',
-         'Impacto a largo plazo sobre el valor de la empresa. Si el MXN se deprecia permanentemente, la posición competitiva de Arauco en México cambia vs. importadores. Afecta el valor de los proyectos futuros (ej. Zitácuaro).',
+        ('fa-calculator','Economic Exposure','Present Value of Future Cash Flows',
+         'Impact a largo plazo sobre el valor de la empresa. If MXN permanently depreciates, Arauco's competitive position in Mexico changes vs. importers. Afecta el valor de los proyectos futuros (ej. Zitácuaro).',
          'Ejemplo: El proyecto Vikingo de $300 MDD generará flujos en MXN. Una depreciación estructural reduce el VPN del proyecto en términos de USD.'),
-        ('fa-book','Exposición de Traslación','Consolidación Contable',
-         'Arauco consolida estados financieros en USD. Sus activos y pasivos en MXN se deben convertir. Una depreciación del MXN reduce el valor en USD de sus activos mexicanos en el balance consolidado.',
+        ('fa-book','Exposición de Traslación','Accounting Consolidation',
+         'Arauco consolidates financial statements in USD. Sus activos y pasivos en MXN se deben convertir. Una depreciación del MXN reduce el valor en USD de sus activos mexicanos en el balance consolidado.',
          'Ejemplo: La planta de Durango valuada en $1,500 MXM. A TC 17 vale US$88.2M; a TC 21 vale solo US$71.4M — pérdida contable de US$16.8M sin mover nada físico.')
       ] %}
       <div class="card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
@@ -96,32 +96,32 @@
 
     <!-- Sensitivity analysis -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Análisis de Sensibilidad</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Impacto en EBITDA México por Variación Cambiaria</h2>
+      <div class="section-eyebrow" data-aos="fade-up">Sensitivity Analysis</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Impact en EBITDA México por Variación Cambiaria</h2>
       <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
-        Basado en EBITDA estimado de operaciones México ~US$120M anuales y exposición neta en insumos USD de ~55% del COGS.
+        Based on estimated Mexico operations EBITDA ~US$120M anuales y exposición neta en insumos USD de ~55% del COGS.
       </p>
     </div>
 
     <div class="split-2">
       <div class="chart-wrap" >
-        <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--forest)"></i> Impacto en EBITDA por Cambio en TC (US$ M)</div>
+        <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--forest)"></i> Impact en EBITDA por Cambio en TC (US$ M)</div>
         <canvas id="sensitivityChart" height="260"></canvas>
       </div>
       <div data-aos="fade-left">
         <div class="table-wrap">
           <table class="premium-table">
             <thead>
-              <tr><th>Escenario TC</th><th>Variación MXN</th><th>Δ Costo Insumos (MXN M)</th><th>Δ EBITDA (US$ M)</th><th>Impacto</th></tr>
+              <tr><th>Escenario TC</th><th>Variación MXN</th><th>Δ Input Cost (MXN M)</th><th>Δ EBITDA (US$ M)</th><th>Impact</th></tr>
             </thead>
             <tbody>
               {% for tc, var, delta_mxn, delta_usd, badge, b_class in [
-                ('16.00','−7.0% (aprecia)','−$560M','+$33M','Positivo','badge-green'),
-                ('16.80','−3.0%','−$240M','+$14M','Moderado+','badge-green'),
+                ('16.00','−7.0% (appreciates)','−$560M','+$33M','Positive','badge-green'),
+                ('16.80','−3.0%','−$240M','+$14M','Moderate+','badge-green'),
                 ('17.20 (base)','0%','—','—','Base','badge-blue'),
-                ('18.00','+5.0%','$420M','−$23M','Negativo','badge-yellow'),
-                ('20.00','+16.2%','$1,360M','−$67M','Severo','badge-red'),
-                ('22.00','+28.0%','$2,240M','−$110M','Crítico','badge-red'),
+                ('18.00','+5.0%','$420M','−$23M','Negative','badge-yellow'),
+                ('20.00','+16.2%','$1,360M','−$67M','Severe','badge-red'),
+                ('22.00','+28.0%','$2,240M','−$110M','Critical','badge-red'),
               ] %}
               <tr>
                 <td><strong>{{ tc }}</strong></td>
@@ -135,10 +135,10 @@
           </table>
         </div>
         <div class="info-panel mt-3">
-          <strong>Supuestos del modelo:</strong> Ingresos México ~US$350M/año,
-          55% del COGS en USD (~US$120M), margen EBITDA base 34%.
+          <strong>Model assumptions:</strong> Ingresos México ~US$350M/año,
+          55% of COGS in USD (~US$120M), base EBITDA margin 34%.
           Variación de costo calculada con elasticidad unitaria al tipo de cambio.
-          Fuente: Arauco (2025); estimaciones propias.
+          Source: Arauco (2025); estimaciones propias.
         </div>
       </div>
     </div>
@@ -147,23 +147,23 @@
 
     <!-- Raw materials exposure -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Materias Primas Críticas</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Insumos en USD que Definen el Costo MXN</h2>
+      <div class="section-eyebrow" data-aos="fade-up">Critical Raw Materials</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Insumos en USD que Definen el Cost MXN</h2>
     </div>
 
     <div class="table-wrap" data-aos="fade-up">
       <table class="premium-table">
         <thead>
-          <tr><th>Insumo</th><th>Precio Ref. 2026 (USD/ton)</th><th>% en Costo Resina</th><th>Cotización</th><th>Riesgo FX</th><th>Tendencia</th></tr>
+          <tr><th>Insumo</th><th>Ref. Price 2026 (USD/ton)</th><th>% en Cost Resina</th><th>Pricing</th><th>FX Risk</th><th>Trend</th></tr>
         </thead>
         <tbody>
           {% for item, precio, pct, cotiz, riesgo, b_class, tend in [
-            ('Urea','$655 – $975','45–55%','Global (CFR)','Alto','badge-red','↑ Volátil'),
-            ('Formaldehído','$380 – $520','25–30%','Regional USD','Alto','badge-red','→ Estable'),
-            ('Metanol','$1,200 – $1,500','8–12%','CME USD/ton','Muy Alto','badge-red','↑ Alcista'),
-            ('Fenol','$1,600 – $1,900','Plywood/OSB','Petroquímico USD','Alto','badge-red','→ Moderado'),
-            ('Madera en rollo','MXN/m³','Base','Local MXN','Bajo','badge-green','→ Estable'),
-            ('Energía eléctrica','MXN/MWh','Overhead','CFE MXN','Bajo','badge-green','↑ Moderado'),
+            ('Urea','$655 – $975','45–55%','Global (CFR)','High','badge-red','↑ Volatile'),
+            ('Formaldehído','$380 – $520','25–30%','Regional USD','High','badge-red','→ Stable'),
+            ('Metanol','$1,200 – $1,500','8–12%','CME USD/ton','Very High','badge-red','↑ Bullish'),
+            ('Fenol','$1,600 – $1,900','Plywood/OSB','Petroquímico USD','High','badge-red','→ Moderate'),
+            ('Madera en rollo','MXN/m³','Base','Local MXN','Low','badge-green','→ Stable'),
+            ('Energía eléctrica','MXN/MWh','Overhead','CFE MXN','Low','badge-green','↑ Moderate'),
           ] %}
           <tr>
             <td><strong>{{ item }}</strong></td>
