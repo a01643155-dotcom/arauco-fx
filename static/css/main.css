@@ -75,11 +75,14 @@ a    { text-decoration:none; color:inherit; }
 }
 .hero-inner   { position:relative; z-index:2; padding:0 3.5rem 5.5rem; max-width:960px; }
 .hero-eyebrow {
-  font-size:.7rem; letter-spacing:.22em; text-transform:uppercase;
-  color:var(--light-sage); margin-bottom:1.5rem;
-  display:flex; align-items:center; gap:.75rem;
+  font-size:.7rem; letter-spacing:.18em; text-transform:uppercase;
+  color:white; margin-bottom:1.5rem;
+  display:inline-flex; align-items:center; gap:.75rem;
+  background:rgba(42,61,31,.55); backdrop-filter:blur(6px);
+  padding:.45rem 1rem; border-radius:50px;
+  border:1px solid rgba(184,201,163,.3);
 }
-.hero-eyebrow::before { content:''; display:block; width:30px; height:1px; background:var(--light-sage); }
+.hero-eyebrow::before { display:none; }
 .hero-title   { font-family:var(--font-serif); font-size:clamp(3.2rem,6.5vw,6rem); font-weight:600; line-height:1.05; color:var(--cream); margin-bottom:1.5rem; }
 .hero-title span { font-style:italic; color:var(--light-sage); }
 .hero-subtitle { font-size:1rem; color:rgba(245,237,216,.7); max-width:520px; line-height:1.8; margin-bottom:2.5rem; }
