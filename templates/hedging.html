@@ -184,6 +184,83 @@ input[type=range]::-webkit-slider-thumb { width:18px;height:18px;border-radius:5
 
     <div class="divider"></div>
 
+    <!-- ── NATURAL HEDGE IMPLEMENTATION ──────────────────────── -->
+    <div class="section-header">
+      <div class="section-eyebrow" data-aos="fade-up">Natural Hedge — How It Works</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Implementation Mechanics</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
+        Natural hedging is not just a concept — it requires deliberate operational decisions. Here is how Arauco Mexico implements it in practice.
+      </p>
+    </div>
+
+    <!-- Flow diagram: USD IN vs USD OUT -->
+    <div class="split-2" style="align-items:flex-start;gap:2rem" data-aos="fade-up">
+      <div>
+        <div class="section-eyebrow" style="margin-bottom:.75rem">Step 1 — Map USD Flows</div>
+        <div style="display:flex;flex-direction:column;gap:.75rem">
+
+          <div style="background:var(--cream);border-radius:14px;padding:1.25rem;border-left:4px solid var(--sage)">
+            <div style="font-size:.72rem;font-weight:700;color:var(--sage);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem">USD INFLOWS — Natural hedge source</div>
+            <div style="font-weight:700;color:var(--forest);font-size:1.05rem;margin-bottom:.3rem">Timber exports to North America</div>
+            <p style="font-size:.88rem;color:var(--gray-600);line-height:1.6;margin:0">
+              38% of Arauco timber sales go to the USA and Canada, generating
+              <strong>~US$133M/year</strong> of USD revenues that never need to be converted to MXN.
+              These are invoiced in USD and collected in USD bank accounts in Mexico.
+            </p>
+          </div>
+
+          <div style="background:var(--cream);border-radius:14px;padding:1.25rem;border-left:4px solid var(--terracotta)">
+            <div style="font-size:.72rem;font-weight:700;color:var(--terracotta);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem">USD OUTFLOWS — Exposure to hedge</div>
+            <div style="font-weight:700;color:var(--forest);font-size:1.05rem;margin-bottom:.3rem">Resin · Methanol · Phenol imports</div>
+            <p style="font-size:.88rem;color:var(--gray-600);line-height:1.6;margin:0">
+              55% of COGS is USD-denominated: chemical inputs (resin, methanol, phenol) purchased
+              from global suppliers at <strong>~US$120M/year</strong>, invoiced in USD.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <div class="section-eyebrow" style="margin-bottom:.75rem">Step 2 — Match &amp; Net</div>
+        <div style="background:var(--forest);color:white;border-radius:14px;padding:1.5rem;margin-bottom:.75rem">
+          <div style="font-size:.72rem;font-weight:700;color:var(--light-sage);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem">Natural Offset Calculation</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.15)">
+            <span style="font-size:.9rem;color:rgba(255,255,255,.8)">USD inflows (timber exports)</span>
+            <span style="font-weight:700;color:var(--light-sage)">+US$133M</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.15)">
+            <span style="font-size:.9rem;color:rgba(255,255,255,.8)">USD outflows (inputs)</span>
+            <span style="font-weight:700;color:#E8A090">−US$120M</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;margin-top:.25rem">
+            <span style="font-size:.9rem;font-weight:700;color:white">Net residual exposure</span>
+            <span style="font-weight:800;font-size:1.1rem;color:var(--light-sage)">~US$13–30M</span>
+          </div>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.75rem;margin-bottom:0;line-height:1.5">
+            Timing mismatches (export collections vs. input payment cycles) generate a practical residual of US$30–60M that requires financial instruments.
+          </p>
+        </div>
+
+        <div class="section-eyebrow" style="margin-bottom:.75rem">Step 3 — Operational Rules</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          {% for icon, rule in [
+            ('fa-university', 'Maintain a dedicated USD account in Mexico — export revenues deposited directly, input invoices paid from same account.'),
+            ('fa-calendar-check', 'Align invoice calendars: negotiate USD input payment dates to coincide with USD export collection windows.'),
+            ('fa-chart-pie', 'Review net position monthly. Any residual above US$10M triggers an OTC forward contract with Banorte or BBVA.'),
+            ('fa-file-contract', 'Negotiate fixed-price contracts with resin suppliers for 3–6 month periods to reduce short-term USD volatility.'),
+          ] %}
+          <div style="display:flex;gap:.85rem;align-items:flex-start;background:var(--beige);border-radius:10px;padding:.9rem">
+            <i class="fa {{ icon }}" style="color:var(--sage);margin-top:.15rem;min-width:14px"></i>
+            <span style="font-size:.85rem;color:var(--charcoal);line-height:1.55">{{ rule }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
     <!-- ── RECOMMENDATION ─────────────────────────────────── -->
     <div class="section-header">
       <div class="section-eyebrow" data-aos="fade-up">Strategic Recommendation</div>
