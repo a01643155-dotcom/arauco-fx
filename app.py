@@ -12,7 +12,7 @@ app = Flask(__name__)
 INDICATORS = {
     "GDP (Current US$)":           "NY.GDP.MKTP.CD",
     "GDP per Capita (US$)":        "NY.GDP.PCAP.CD",
-    "Inflation (CPI)":             "FP.CPI.TOTL",
+    "Inflation (CPI annual %)":    "FP.CPI.TOTL.ZG",
     "Unemployment (%)":            "SL.UEM.TOTL.ZS",
     "Exchange Rate (LCU/USD)":     "PA.NUS.FCRF",
     "Real Interest Rate (%)":      "FR.INR.RINR",
