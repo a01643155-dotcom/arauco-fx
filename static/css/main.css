@@ -1,7 +1,7 @@
 /* ================================================================
    ARAUCO FX — EDITORIAL REDESIGN
    Palette: warm earth, cream, forest green, terracotta
-   Type: Cormorant Garamond (serif) + Inter (sans)
+   Type: Inter (unified) — 400 body · 500 labels · 700 titles · 800 numbers
    ================================================================ */
 
 /* ── VARIABLES ─────────────────────────────────────────────────── */
@@ -21,7 +21,7 @@
   --gray-400:    #A09585;
   --gold:        #C8963C;
   --white:       #FFFFFF;
-  --font-serif:  'Cormorant Garamond', Georgia, serif;
+  --font-serif:  'Inter', system-ui, sans-serif;
   --font-sans:   'Inter', system-ui, sans-serif;
   --radius-sm:   4px;
   --radius-md:   12px;
@@ -511,4 +511,66 @@ canvas {
     z-index: 999;
   }
   .nav-links.open { display: flex; }
+}
+
+/* ── INTER TYPOGRAPHY HIERARCHY ─────────────────────────────────── */
+
+/* Tier 1 — Big numbers & display stats: 800, tight tracking */
+.bento-stat, .bento-stat-light, .bento-stat-terracotta,
+.stat-number, .metric-value, .stats-val,
+.scenario-rate {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+/* Tier 2 — Section titles & hero headings: 700, slightly tight */
+.hero-title, .page-hero-title, .section-title,
+.bento-title, .bento-title-light, .bento-title-white,
+.highlight-block h3, .fx-banner h3, h3.font-head,
+.hedge-card-header h4, .chart-title,
+h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Tier 3 — Card titles & small headings: 600 */
+.card-title, .biz-title, .team-name,
+.instr-stat-val, .footer-brand {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Tier 4 — Nav, labels, eyebrows: 500 uppercase open tracking */
+.nav-link, .section-eyebrow, .page-hero-eyebrow,
+.bento-label, .bento-label-light, .bento-label-cream,
+.stat-label, .metric-label, .badge, .tag,
+.hedge-row-label, .team-role, .logo-sub,
+.sidebar-title, .stats-lbl {
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+/* Tier 5 — Body & data text: 400, comfortable line-height */
+body, p, .card-text, .timeline-text,
+.scenario-desc, td, li {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* Hero title keeps large clamp sizing */
+.hero-title {
+  font-size: clamp(3.2rem, 6.5vw, 6rem);
+  line-height: 1.05;
+}
+.page-hero-title {
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  line-height: 1.1;
+}
+.section-title {
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  line-height: 1.15;
 }
