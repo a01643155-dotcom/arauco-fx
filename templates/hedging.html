@@ -2,18 +2,49 @@
 {% block title %}Hedging Strategy · Arauco FX{% endblock %}
 {% block content %}
 
+<style>
+.instr-tab {
+  padding:.6rem 1.5rem;border-radius:50px;border:2px solid var(--forest);
+  background:transparent;color:var(--forest);font-family:var(--font-sans);
+  font-size:.85rem;font-weight:600;cursor:pointer;transition:all .22s;
+}
+.instr-tab:hover { background:var(--forest);color:white; }
+.instr-tab.active { background:var(--forest);color:white;box-shadow:0 4px 14px rgba(42,61,31,.25); }
+.calc-wrap { background:var(--cream);border-radius:var(--radius-lg);padding:2.5rem; }
+.calc-label { display:block;font-weight:600;font-size:.82rem;color:var(--forest);
+  text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem; }
+input[type=range] { width:100%;height:5px;cursor:pointer;border-radius:4px; }
+input[type=range]::-webkit-slider-thumb { width:18px;height:18px;border-radius:50%; }
+.result-card { background:white;border-radius:14px;padding:1.25rem;
+  box-shadow:0 2px 14px rgba(0,0,0,.07);transition:transform .2s; }
+.result-card:hover { transform:translateY(-2px); }
+.instr-stat { background:var(--beige);border-radius:10px;padding:.9rem; }
+.instr-stat-label { font-size:.68rem;font-weight:700;color:var(--sage);
+  text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem; }
+.instr-stat-val { font-family:var(--font-serif);font-size:1rem;color:var(--forest);font-weight:600; }
+.pro-con-item { font-size:.83rem;color:var(--gray-600);padding:.2rem 0;
+  border-bottom:1px solid var(--beige);line-height:1.5; }
+.scenario-toggle-btn {
+  padding:.55rem 1.25rem;border-radius:8px;border:1.5px solid var(--beige);
+  background:white;font-size:.82rem;font-weight:600;cursor:pointer;
+  color:var(--charcoal);transition:all .2s;
+}
+.scenario-toggle-btn.active { background:var(--forest);color:white;border-color:var(--forest); }
+</style>
+
 <section class="page-hero">
   <div class="page-hero-bg" style="background-image:url('/static/images/Carpintero2.jpg')"></div>
   <div class="page-hero-inner">
     <div class="page-hero-eyebrow"><i class="fa fa-shield-alt"></i> Hedging Strategy</div>
     <h1 class="page-hero-title">Hedging Strategies<br/>for Arauco Mexico</h1>
-    <p class="page-hero-sub">Design, comparison and recommendation of currency hedging instruments: forwards, futures, swaps and natural hedging.</p>
+    <p class="page-hero-sub">Design, comparison and recommendation of currency hedging instruments: forwards, futures, options and natural hedging.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
 
+    <!-- ── CURRENT POSITION ───────────────────────────────── -->
     <div class="split-2">
       <div data-aos="fade-right">
         <div class="section-eyebrow">Current Position</div>
@@ -65,99 +96,102 @@
 
     <div class="divider"></div>
 
+    <!-- ── INTERACTIVE INSTRUMENT EXPLORER ────────────────── -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Comparative Analysis</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Payoff Diagram: Hedged vs. Unhedged</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">Scenario: Arauco needs to buy US$1,000,000 to pay for inputs in 3 months.</p>
+      <div class="section-eyebrow" data-aos="fade-up">Interactive Analysis</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Explore Each Instrument</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
+        Select an instrument to see its payoff profile, key parameters and strategic fit for Arauco.
+      </p>
     </div>
 
-    <div class="split-2">
+    <div style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem">
+      <button class="instr-tab active" data-instr="forward" onclick="switchInstr('forward')">
+        <i class="fa fa-lock" style="margin-right:.4rem"></i>OTC Forward
+      </button>
+      <button class="instr-tab" data-instr="futures" onclick="switchInstr('futures')">
+        <i class="fa fa-exchange-alt" style="margin-right:.4rem"></i>MEXDER Future
+      </button>
+      <button class="instr-tab" data-instr="option" onclick="switchInstr('option')">
+        <i class="fa fa-umbrella" style="margin-right:.4rem"></i>CALL Option
+      </button>
+      <button class="instr-tab" data-instr="natural" onclick="switchInstr('natural')">
+        <i class="fa fa-leaf" style="margin-right:.4rem"></i>Natural Hedge
+      </button>
+    </div>
+
+    <div class="split-2" style="align-items:flex-start;gap:2.5rem">
       <div class="chart-wrap">
-        <div class="chart-title"><i class="fa fa-chart-line" style="color:var(--green)"></i> Net Cost by Instrument (MXN)</div>
-        <canvas id="payoffChart" height="280"></canvas>
-        <p style="font-size:.78rem;color:var(--gray-600);margin-top:.75rem">
-          Forward at 17.50 MXN/USD · OTM Call with K=18.00, estimated premium 0.085 USD/MXN.
-          Notional: US$1,000,000.
+        <div id="instrChartTitle" class="chart-title">
+          <i class="fa fa-chart-area" style="color:var(--green)"></i>
+          OTC Forward — Payoff Profile
+        </div>
+        <canvas id="instrChart" height="300"></canvas>
+        <p id="instrChartNote" style="font-size:.78rem;color:var(--gray-600);margin-top:.75rem">
+          Notional: US$1,000,000 · Forward rate: 17.50 MXN/USD · Zero premium cost
         </p>
       </div>
-      <div class="chart-wrap">
-        <div class="chart-title"><i class="fa fa-chart-bar" style="color:var(--forest)"></i> Estimated Hedging Cost (% of notional)</div>
-        <canvas id="hedgeCostChart" height="280"></canvas>
-      </div>
+      <div id="instrDetail" style="display:flex;flex-direction:column;gap:1rem;min-height:300px"></div>
     </div>
 
     <div class="divider"></div>
 
+    <!-- ── LIVE FX CALCULATOR ──────────────────────────────── -->
     <div class="section-header">
-      <div class="section-eyebrow" data-aos="fade-up">Available Instruments</div>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Strategy Comparison</h2>
+      <div class="section-eyebrow" data-aos="fade-up">Live Calculator</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">FX Impact Simulator</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
+        Move the sliders — see the real cost for Arauco under each strategy in real time.
+      </p>
     </div>
 
-    <div class="hedge-grid">
-      {% for title, sub, rows in [
-        ('OTC USD/MXN Forward','Direct forward contract with a bank',[
-          ('Type','Bilateral obligation (no upfront cost)'),
-          ('Typical Tenor','1–12 months'),
-          ('Fixed TC','Interest Rate Parity: F = S x [(1+r_MXN)/(1+r_USD)]^t'),
-          ('Advantage','Absolute TC certainty; no premium cost'),
-          ('Disadvantage','No benefit if TC improves; counterparty risk'),
-          ('Market','OTC bilateral with banks (BBVA, Santander, Banamex)'),
-          ('Ideal for Arauco','USD input payments known 1-6 months in advance'),
-        ]),
-        ('MEXDER Future','Standardized contracts on Mexico exchange',[
-          ('Type','Standardized obligation; daily settlement'),
-          ('Contract Size','10,000 USD per contract'),
-          ('Reference TC','Quoted MXN/USD — agreement to buy USD at fixed price'),
-          ('Advantage','No counterparty risk (MEXDER as clearing house)'),
-          ('Disadvantage','Fixed sizes, daily margins (mark-to-market), lower liquidity'),
-          ('Estimated Cost','Commission ~0.10% + initial margin 5-8% of notional'),
-          ('Ideal for Arauco','Hedging recurring standard-size transactions'),
-        ]),
-        ('OTC USD CALL Option','Right to buy USD at the strike price',[
-          ('Type','Right, not obligation; upfront premium payment'),
-          ('Arauco Position','LONG (buys the option — protection against TC rise)'),
-          ('Typical Premium','0.3–1.5% of notional (depending on tenor and moneyness)'),
-          ('Advantage','Protection if TC rises; benefits if TC falls (does not exercise)'),
-          ('Disadvantage','Premium cost paid regardless of outcome'),
-          ('Recommended Strike','OTM near ATM (e.g., K=18.00 with spot at 17.20)'),
-          ('Ideal for Arauco','High volatility and expectation of stable or appreciating MXN'),
-        ]),
-        ('Natural Hedge + Swap','Long-term structure without formal derivatives',[
-          ('Type','Operational currency balance management'),
-          ('Mechanism','USD export revenues offset USD input payments'),
-          ('Swap','Interest Rate Swap if there is floating USD debt converted to fixed rate'),
-          ('Advantage','No premium cost, no special IFRS 9 hedge accounting'),
-          ('Disadvantage','Partial hedging — does not eliminate exposure if net mismatch exists'),
-          ('Arauco Status','Currently applied; sufficient while exposure is moderate'),
-          ('Ideal for Arauco','Long-term strategy as complement to OTC instruments'),
-        ]),
-      ] %}
-      <div class="hedge-card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
-        <div class="hedge-card-header">
-          <h4>{{ title }}</h4>
-          <p>{{ sub }}</p>
-        </div>
-        <div class="hedge-card-body">
-          {% for label, val in rows %}
-          <div class="hedge-row">
-            <span class="hedge-row-label">{{ label }}</span>
-            <span class="hedge-row-value">{{ val }}</span>
+    <div class="calc-wrap" data-aos="fade-up">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.5rem;margin-bottom:2rem">
+        <div>
+          <label class="calc-label"><i class="fa fa-dollar-sign"></i> USD Payment Amount</label>
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <input type="range" id="calcAmount" min="500000" max="10000000" step="250000" value="1000000"
+              style="flex:1;accent-color:var(--forest)" oninput="updateCalc()"/>
+            <span id="calcAmountVal"
+              style="font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--forest);min-width:90px;text-align:right">
+              $1.0M
+            </span>
           </div>
-          {% endfor %}
+          <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--gray-600);margin-top:.3rem">
+            <span>$500K</span><span>$10M</span>
+          </div>
+        </div>
+        <div>
+          <label class="calc-label"><i class="fa fa-exchange-alt"></i> Future USD/MXN Rate at Settlement</label>
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <input type="range" id="calcRate" min="15" max="23" step="0.1" value="18.5"
+              style="flex:1;accent-color:var(--terracotta)" oninput="updateCalc()"/>
+            <span id="calcRateVal"
+              style="font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--terracotta);min-width:65px;text-align:right">
+              18.50
+            </span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--gray-600);margin-top:.3rem">
+            <span>15 (MXN strong)</span><span>23 (MXN weak)</span>
+          </div>
         </div>
       </div>
-      {% endfor %}
+      <div id="calcResults" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem"></div>
+      <p id="calcFootnote" style="font-size:.76rem;color:var(--gray-600);margin-top:1.25rem;text-align:center">
+        Forward rate assumed at 17.50 · CALL Option: Strike 18.00, premium 0.085 USD · Natural hedge: 50% coverage assumed
+      </p>
     </div>
 
     <div class="divider"></div>
 
+    <!-- ── RECOMMENDATION ─────────────────────────────────── -->
     <div class="section-header">
       <div class="section-eyebrow" data-aos="fade-up">Strategic Recommendation</div>
       <h2 class="section-title" data-aos="fade-up" data-aos-delay="60">The Best Strategy for Arauco</h2>
     </div>
 
     <div class="highlight-block" data-aos="fade-up">
-      <h3>🌿 Recommended Strategy: Forward + Natural Hedging (Hybrid)</h3>
+      <h3>&#127807; Recommended Strategy: Forward + Natural Hedging (Hybrid)</h3>
       <p style="margin-bottom:1.5rem">Given the short USD operating exposure of US$120–150M/year, the most efficient policy for Arauco Mexico would be:</p>
       <div class="cards-grid" style="grid-template-columns:repeat(3,1fr);gap:1.25rem">
         {% for num, title, text in [
@@ -206,33 +240,220 @@
 {% block extra_js %}
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const pCtx = document.getElementById('payoffChart');
-  if(pCtx) {
-    const spots = [15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21];
-    const fwd = 17.5, K = 18.0, prem = 0.085;
-    new Chart(pCtx, {
-      type:'line',
-      data:{
-        labels:spots,
-        datasets:[
-          {label:'Unhedged',data:spots.map(s=>s*1000000),borderColor:'#A85B3A',borderWidth:2,tension:0,pointRadius:2},
-          {label:'Forward (17.50)',data:spots.map(()=>fwd*1000000),borderColor:'#2A3D1F',borderWidth:2.5,borderDash:[6,3],pointRadius:0},
-          {label:'Call Option',data:spots.map(s=>(s>K?K+prem:s+prem)*1000000),borderColor:'#7A8C5E',borderWidth:2,tension:0.3,pointRadius:2}
-        ]
-      },
-      options:{plugins:{legend:{labels:{font:{size:10}}}},scales:{x:{title:{display:true,text:'TC MXN/USD'},grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}},animation:{duration:1200}}
-    });
-  }
-  const hCtx = document.getElementById('hedgeCostChart');
-  if(hCtx) new Chart(hCtx, {
-    type:'bar',
-    data:{
-      labels:['Natural Hedge','OTC Forward','MEXDER Future','OTM Call Option','Currency Swap'],
-      datasets:[{label:'Cost (% of notional)',data:[0,0,0.1,0.85,1.2],
-        backgroundColor:['rgba(61,90,46,0.8)','rgba(61,90,46,0.7)','rgba(122,140,94,0.7)','rgba(168,91,58,0.7)','rgba(168,91,58,0.5)'],borderRadius:4}]
+
+  // ── INSTRUMENT DATA ───────────────────────────────────────
+  var SPOTS = [15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21];
+
+  var INSTRS = {
+    forward: {
+      title: 'OTC Forward — Payoff Profile',
+      note: 'Notional: US$1,000,000 · Forward rate: 17.50 MXN/USD · Zero premium cost',
+      badge: 'Recommended', badgeClass: 'badge-green',
+      desc: 'A bilateral agreement with a bank to exchange currency at a predetermined rate on a future date. No premium cost — Arauco locks in 17.50 MXN/USD regardless of what the market does at settlement.',
+      stats: [
+        {l:'Forward Rate', v:'17.50 MXN/USD'},
+        {l:'Typical Tenor', v:'1 – 12 months'},
+        {l:'Upfront Cost', v:'Zero premium'},
+        {l:'TC Certainty', v:'100%'}
+      ],
+      pros: ['Zero cost', 'Perfect price certainty', 'Simple IFRS accounting'],
+      cons: ['No benefit if MXN appreciates', 'Counterparty credit risk'],
+      color: '#2A3D1F',
+      datasets: function(s){ return [
+        {label:'Unhedged', data:s.map(function(x){return x*1e6;}), borderColor:'#A85B3A', borderWidth:2, tension:0, pointRadius:3, fill:false},
+        {label:'OTC Forward (17.50)', data:s.map(function(){return 17.5*1e6;}), borderColor:'#2A3D1F', borderWidth:3, borderDash:[7,4], pointRadius:0, fill:false}
+      ];}
     },
-    options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,0,0,0.05)'},title:{display:true,text:'% of Notional'}},y:{grid:{display:false}}},animation:{duration:1200}}
-  });
+    futures: {
+      title: 'MEXDER Future — Payoff Profile',
+      note: 'Contract size: $10,000 USD · Initial margin: 5-8% · Commission: ~0.10%',
+      badge: 'Complementary', badgeClass: 'badge-yellow',
+      desc: 'Standardized exchange-traded contracts on the Mexican Derivatives Exchange. Daily mark-to-market settlement eliminates counterparty risk but requires active margin management.',
+      stats: [
+        {l:'Contract Size', v:'$10,000 USD'},
+        {l:'Initial Margin', v:'5 – 8% of notional'},
+        {l:'Commission', v:'~0.10% of notional'},
+        {l:'Clearing House', v:'MEXDER (no counterparty risk)'}
+      ],
+      pros: ['No counterparty risk', 'Transparent market pricing', 'Regulated exchange'],
+      cons: ['Fixed contract sizes', 'Daily margin calls', 'Lower OTC liquidity'],
+      color: '#7A8C5E',
+      datasets: function(s){ return [
+        {label:'Unhedged', data:s.map(function(x){return x*1e6;}), borderColor:'#A85B3A', borderWidth:2, tension:0, pointRadius:3, fill:false},
+        {label:'MEXDER Future + Cost', data:s.map(function(){return 17.5*1.001*1e6;}), borderColor:'#7A8C5E', borderWidth:3, borderDash:[7,4], pointRadius:0, fill:false}
+      ];}
+    },
+    option: {
+      title: 'OTC CALL Option — Payoff Profile',
+      note: 'Strike: K=18.00 · Premium: ~0.085 USD/MXN · Arauco is LONG (buyer of protection)',
+      badge: 'High Volatility', badgeClass: 'badge-yellow',
+      desc: 'Arauco pays a premium today for the right — but not the obligation — to buy USD at 18.00. If MXN depreciates past 18.00, the option activates. If MXN stays strong, Arauco lets it expire and buys cheaper in spot.',
+      stats: [
+        {l:'Option Type', v:'OTM USD CALL'},
+        {l:'Strike Price', v:'18.00 MXN/USD'},
+        {l:'Premium Paid', v:'~0.085 USD (upfront)'},
+        {l:'Arauco Position', v:'LONG — buyer of protection'}
+      ],
+      pros: ['Capped maximum cost', 'Full upside if MXN appreciates', 'Flexible — no obligation'],
+      cons: ['Premium paid regardless of outcome', 'Higher complexity vs. forward'],
+      color: '#C8963C',
+      datasets: function(s){ return [
+        {label:'Unhedged', data:s.map(function(x){return x*1e6;}), borderColor:'#A85B3A', borderWidth:2, tension:0, pointRadius:3, fill:false},
+        {label:'CALL Option (K=18)', data:s.map(function(x){return (Math.min(x,18)+0.085)*1e6;}), borderColor:'#C8963C', borderWidth:2.5, tension:0.3, pointRadius:3, fill:false}
+      ];}
+    },
+    natural: {
+      title: 'Natural Hedge — Exposure Reduction',
+      note: 'USD timber export revenues offset USD input payments — currently ~40-50% coverage',
+      badge: 'Currently Used', badgeClass: 'badge-green',
+      desc: 'Arauco uses USD revenues from timber exports to North America to naturally offset USD input payments. No derivatives needed. 38% of timber sales go to USA and Canada, providing a built-in currency buffer.',
+      stats: [
+        {l:'Coverage', v:'40 – 50% of gross exposure'},
+        {l:'Upfront Cost', v:'Zero'},
+        {l:'IFRS 9 Requirement', v:'No hedge accounting needed'},
+        {l:'Current Status', v:'Already applied at Arauco'}
+      ],
+      pros: ['Zero cost', 'No accounting complexity', 'Structurally embedded in operations'],
+      cons: ['Partial coverage only (~50%)', 'Cannot eliminate residual USD mismatch'],
+      color: '#3D5A2E',
+      datasets: function(s){ return [
+        {label:'Full USD Exposure', data:s.map(function(x){return x*1e6;}), borderColor:'#A85B3A', borderWidth:2, tension:0, pointRadius:3, fill:false},
+        {label:'Net After Natural Hedge (50%)', data:s.map(function(x){return x*1e6*0.5;}), borderColor:'#3D5A2E', borderWidth:2.5, tension:0, pointRadius:3, fill:false}
+      ];}
+    }
+  };
+
+  var instrChart = null;
+
+  window.switchInstr = function(key) {
+    document.querySelectorAll('.instr-tab').forEach(function(t){
+      t.classList.toggle('active', t.dataset.instr === key);
+    });
+    var d = INSTRS[key];
+
+    // Update title & note
+    document.getElementById('instrChartTitle').innerHTML =
+      '<i class="fa fa-chart-area" style="color:var(--green)"></i> ' + d.title;
+    document.getElementById('instrChartNote').textContent = d.note;
+
+    // Rebuild chart
+    if(instrChart){ instrChart.destroy(); instrChart = null; }
+    var ctx = document.getElementById('instrChart');
+    instrChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: SPOTS,
+        datasets: d.datasets(SPOTS)
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { labels: { font: {size:11}, boxWidth:16 } } },
+        scales: {
+          x: {
+            title: { display:true, text:'Spot Rate at Settlement (MXN/USD)' },
+            grid: { display:false }
+          },
+          y: {
+            title: { display:true, text:'Total Cost (MXN)' },
+            grid: { color:'rgba(0,0,0,0.05)' },
+            ticks: { callback: function(v){ return (v/1e6).toFixed(1)+'M'; } }
+          }
+        },
+        animation: { duration: 500 }
+      }
+    });
+
+    // Update detail panel
+    var statsHtml = d.stats.map(function(s){
+      return '<div class="instr-stat">' +
+        '<div class="instr-stat-label">' + s.l + '</div>' +
+        '<div class="instr-stat-val">' + s.v + '</div>' +
+        '</div>';
+    }).join('');
+
+    var prosHtml = d.pros.map(function(p){
+      return '<div class="pro-con-item">&#10003; ' + p + '</div>';
+    }).join('');
+
+    var consHtml = d.cons.map(function(c){
+      return '<div class="pro-con-item">&#10007; ' + c + '</div>';
+    }).join('');
+
+    document.getElementById('instrDetail').innerHTML =
+      '<div style="display:flex;align-items:center;gap:.75rem">' +
+        '<span class="badge ' + d.badgeClass + '">' + d.badge + '</span>' +
+      '</div>' +
+      '<p style="color:var(--gray-600);line-height:1.85;font-size:.94rem">' + d.desc + '</p>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">' + statsHtml + '</div>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.25rem">' +
+        '<div>' +
+          '<div style="font-size:.72rem;font-weight:700;color:#2A6832;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">Advantages</div>' +
+          prosHtml +
+        '</div>' +
+        '<div>' +
+          '<div style="font-size:.72rem;font-weight:700;color:#8B3A3A;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">Disadvantages</div>' +
+          consHtml +
+        '</div>' +
+      '</div>';
+  };
+
+  // Initialize with forward
+  switchInstr('forward');
+
+  // ── CALCULATOR ────────────────────────────────────────────
+  window.updateCalc = function() {
+    var amt  = parseFloat(document.getElementById('calcAmount').value);
+    var rate = parseFloat(document.getElementById('calcRate').value);
+    var fwd  = 17.5, K = 18.0, prem = 0.085, natCov = 0.5;
+
+    var amtM = (amt/1e6).toFixed(2).replace(/\.0+$/,'');
+    document.getElementById('calcAmountVal').textContent = '$' + amtM + 'M';
+    document.getElementById('calcRateVal').textContent = rate.toFixed(2);
+
+    var unhedged = amt * rate;
+    var fwdCost  = amt * fwd;
+    var optCost  = amt * (Math.min(rate, K) + prem);
+    var natCost  = amt * rate * (1 - natCov);
+
+    var fwdDelta = unhedged - fwdCost;
+    var optDelta = unhedged - optCost;
+
+    function mxn(v){ return 'MXN ' + (v/1e6).toFixed(2) + 'M'; }
+    function delta(v){
+      if(v > 0)  return '<span style="color:#2A6832;font-size:.78rem">&#9650; Saves ' + mxn(v) + ' vs. unhedged</span>';
+      if(v < 0)  return '<span style="color:#8B3A3A;font-size:.78rem">&#9660; Extra cost ' + mxn(-v) + ' vs. unhedged</span>';
+      return '<span style="color:var(--gray-600);font-size:.78rem">No difference</span>';
+    }
+
+    var cards = [
+      { icon:'fa-times-circle', label:'Unhedged Cost',
+        val: mxn(unhedged), color:'#A85B3A',
+        sub:'<span style="font-size:.78rem;color:var(--gray-600)">Market rate at settlement</span>' },
+      { icon:'fa-lock', label:'OTC Forward',
+        val: mxn(fwdCost), color: fwdDelta>=0?'#2A3D1F':'#A85B3A',
+        sub: delta(fwdDelta) },
+      { icon:'fa-umbrella', label:'CALL Option (K=18)',
+        val: mxn(optCost), color: optDelta>=0?'#C8963C':'#A85B3A',
+        sub: delta(optDelta) },
+      { icon:'fa-leaf', label:'Net Exposure — Natural Hedge',
+        val: mxn(natCost), color:'#3D5A2E',
+        sub:'<span style="font-size:.78rem;color:var(--gray-600)">50% offset by USD export revenues</span>' }
+    ];
+
+    document.getElementById('calcResults').innerHTML = cards.map(function(c){
+      return '<div class="result-card" style="border-top:3px solid ' + c.color + '">' +
+        '<div style="font-size:.71rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem">' +
+          '<i class="fa ' + c.icon + '" style="color:' + c.color + ';margin-right:.3rem"></i>' + c.label +
+        '</div>' +
+        '<div style="font-family:var(--font-serif);font-size:1.45rem;font-weight:700;color:' + c.color + ';line-height:1;margin-bottom:.35rem">' + c.val + '</div>' +
+        c.sub +
+        '</div>';
+    }).join('');
+  };
+
+  // Init calculator
+  updateCalc();
+
 });
 </script>
 {% endblock %}
